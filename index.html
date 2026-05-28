@@ -17,6 +17,7 @@ body {
   background-repeat: no-repeat;
 }
 
+/* 背景暗くする */
 body::before {
   content: "";
   position: fixed;
@@ -28,6 +29,7 @@ body::before {
   z-index: -1;
 }
 
+/* ヘッダー */
 header {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
@@ -41,6 +43,7 @@ header a {
   font-weight: bold;
 }
 
+/* メイン */
 .container {
   display: flex;
   justify-content: center;
@@ -48,6 +51,7 @@ header a {
   padding: 60px 20px;
 }
 
+/* カード */
 .box {
   background: rgba(255,255,255,0.9);
   border-radius: 12px;
@@ -56,6 +60,7 @@ header a {
   color: #333;
 }
 
+/* サイズ */
 .left, .right {
   width: 250px;
 }
@@ -66,12 +71,14 @@ header a {
   text-align: center;
 }
 
+/* 画像 */
 img {
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
 
+/* SNS */
 .sns-section {
   display: flex;
   justify-content: center;
@@ -116,6 +123,26 @@ img {
   text-shadow: 0 0 8px #00f7ff;
 }
 
+/* ✅ 左下ツイート */
+.feed-fixed {
+  position: fixed;
+  left: 20px;
+  bottom: 20px;
+
+  width: 280px;
+  height: 300px;
+
+  border-radius: 12px;
+  overflow: hidden;
+
+  background: rgba(0,0,0,0.6);
+  backdrop-filter: blur(6px);
+
+  border: 1px solid rgba(255,255,255,0.3);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+}
+
+/* スマホ */
 @media (max-width: 768px) {
   .container {
     flex-direction: column;
@@ -130,6 +157,11 @@ img {
     flex-direction: column;
     align-items: center;
   }
+
+  .feed-fixed {
+    position: static;
+    margin: 20px auto;
+  }
 }
 </style>
 </head>
@@ -137,15 +169,15 @@ img {
 <body>
 
 <header>
-  <a href="portfolio.html">ポートフォリオ</a>
-  <a href="index.html">TOP</a>
-  <a href="blog.html">BLOG</a>
+  portfolio.htmlポートフォリオ</a>
+  index.htmlTOP</a>
+  blog.htmlBLOG</a>
 </header>
 
 <div class="container">
 
   <div class="box left">
-    <img src="image1.jpg">
+    image1.jpg
   </div>
 
   <div class="box center">
@@ -158,14 +190,15 @@ img {
   </div>
 
   <div class="box right">
-    <img src="image2.jpg">
+    image2.jpg
   </div>
 
 </div>
 
+<!-- SNS -->
 <div class="sns-section">
 
-  <a href="https://instagram.com" target="_blank" class="sns-box instagram">
+  https://instagram.com
     📸 Instagram
   </a>
 
@@ -178,6 +211,19 @@ img {
   </a>
 
 </div>
+
+<!-- ✅ X埋め込み（左下） -->
+<div class="feed-fixed">
+  <a class="twitter-timeline"
+     data-height="300"
+     data-theme="dark"
+     href="https://x.com/matsuu_jp">
+     Tweets by matsuu_jp
+  </a>
+</div>
+
+<!-- ✅ 正しい script -->
+<script async src="https://platform.twitter.com/widgets.js"></script>
 
 </body>
 </html>
