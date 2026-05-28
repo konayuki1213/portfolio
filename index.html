@@ -1,10 +1,8 @@
-
-
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Portfolio</title>
 
 <style>
@@ -15,7 +13,7 @@ body {
   color: #333;
 }
 
-/* ヘッダー */
+/* ===== ヘッダー ===== */
 header {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
@@ -29,14 +27,13 @@ header a {
   color: #000;
   font-weight: bold;
   text-align: center;
-  transition: 0.3s;
 }
 
 header a:hover {
   opacity: 0.5;
 }
 
-/* メイン */
+/* ===== メイン ===== */
 .container {
   display: flex;
   justify-content: center;
@@ -67,32 +64,57 @@ img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: 0.5s;
+  transition: 0.4s;
 }
 
 img:hover {
   transform: scale(1.05);
 }
 
-/* アニメーション */
-.box {
-  opacity: 0;
-  transform: translateY(30px);
-  animation: fade 1s forwards;
+/* ===== SNS部分 ===== */
+.sns-section {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  padding: 60px 20px;
 }
 
-.left { animation-delay: 0.2s; }
-.center { animation-delay: 0.4s; }
-.right { animation-delay: 0.6s; }
-
-@keyframes fade {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+.sns-box {
+  width: 180px;
+  height: 110px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  font-weight: bold;
+  transition: 0.3s;
+  box-shadow: 0 8px 15px rgba(0,0,0,0.1);
 }
 
-/* スマホ */
+.sns-box:hover {
+  transform: translateY(-5px);
+}
+
+/* Instagram */
+.instagram {
+  background: linear-gradient(45deg, #f9ce34, #ee2a7b, #6228d7);
+  color: #fff;
+}
+
+/* TikTok */
+.tiktok {
+  background: #000;
+  color: #0ff;
+}
+
+/* X */
+.x {
+  background: #000;
+  color: #fff;
+}
+
+/* ===== スマホ ===== */
 @media (max-width: 768px) {
   .container {
     flex-direction: column;
@@ -102,8 +124,12 @@ img:hover {
   .left, .center, .right {
     width: 90%;
   }
-}
 
+  .sns-section {
+    flex-direction: column;
+    align-items: center;
+  }
+}
 </style>
 </head>
 
@@ -133,6 +159,23 @@ img:hover {
   <div class="box right">
     <img src="image2.jpg">
   </div>
+
+</div>
+
+<!-- ✅ SNS（画像なし版） -->
+<div class="sns-section">
+
+  <a href="https://instagram.com" class="sns-box instagram">
+    📸 Instagram
+  </a>
+
+  <a href="https://tiktok.com" class="sns-box tiktok">
+    🎵 TikTok
+  </a>
+
+  <a href="https://x.com" class="sns-box x">
+    ✖ X
+  </a>
 
 </div>
 
