@@ -1,4 +1,5 @@
 
+
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -13,20 +14,22 @@
       background: #f5f5f5;
     }
 
-    /* ナビゲーション */
+    /* === ヘッダー（ズレ修正） === */
     header {
-      display: flex;
-      justify-content: space-between;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
       background: #fff;
       padding: 20px;
       border-bottom: 2px solid #ddd;
+      text-align: center;
     }
 
     header div {
+      display: inline-block;
       border: 2px solid #000;
-      padding: 10px 30px;
-      cursor: pointer;
+      padding: 10px 20px;
       transition: 0.3s;
+      cursor: pointer;
     }
 
     header div:hover {
@@ -34,7 +37,7 @@
       color: #fff;
     }
 
-    /* メイン */
+    /* === メイン === */
     .container {
       display: flex;
       justify-content: center;
@@ -49,7 +52,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 18px;
+      overflow: hidden;
     }
 
     .left, .right {
@@ -62,7 +65,14 @@
       text-align: center;
     }
 
-    /* アニメーション */
+    /* === 画像対応 === */
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* === アニメーション === */
     .box {
       opacity: 0;
       transform: translateY(30px);
@@ -80,7 +90,7 @@
       }
     }
 
-    /* スマホ対応 */
+    /* === スマホ対応 === */
     @media (max-width: 768px) {
       .container {
         flex-direction: column;
@@ -96,15 +106,22 @@
 
 <body>
 
+  <!-- ヘッダー -->
   <header>
     <div>ポートフォリオ</div>
     <div>TOP</div>
     <div>BLOG</div>
   </header>
 
+  <!-- メイン -->
   <div class="container">
-    <div class="box left">写真</div>
 
+    <!-- 左の写真 -->
+    <div class="box left">
+      <img src="image1.jpg" alt="写真">
+    </div>
+
+    <!-- 自己紹介 -->
     <div class="box center">
       <div>
         <h2>自己紹介</h2>
@@ -116,7 +133,11 @@
       </div>
     </div>
 
-    <div class="box right">写真</div>
+    <!-- 右の写真 -->
+    <div class="box right">
+      <img src="image2.jpg" alt="写真">
+    </div>
+
   </div>
 
 </body>
