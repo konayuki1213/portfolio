@@ -9,31 +9,42 @@
 body {
   margin: 0;
   font-family: "Helvetica Neue", sans-serif;
-  background: #f4f4f4;
-  color: #333;
+  color: #fff;
+
+  /* ✅ 背景画像 */
+  background-image: url("bg.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
-/* ===== ヘッダー ===== */
+/* ✅ 背景暗くする（これ重要） */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.5);
+  z-index: -1;
+}
+
+/* ヘッダー */
 header {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  background: #fff;
   padding: 20px;
-  border-bottom: 1px solid #ddd;
 }
 
 header a {
   text-decoration: none;
-  color: #000;
+  color: #fff;
   font-weight: bold;
   text-align: center;
 }
 
-header a:hover {
-  opacity: 0.5;
-}
-
-/* ===== メイン ===== */
+/* メイン */
 .container {
   display: flex;
   justify-content: center;
@@ -41,14 +52,16 @@ header a:hover {
   padding: 60px 20px;
 }
 
+/* ボックス */
 .box {
-  background: #fff;
+  background: rgba(255,255,255,0.9);
   border-radius: 10px;
   overflow: hidden;
   height: 400px;
-  box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+  color: #333;
 }
 
+/* サイズ */
 .left, .right {
   width: 250px;
 }
@@ -64,14 +77,9 @@ img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: 0.4s;
 }
 
-img:hover {
-  transform: scale(1.05);
-}
-
-/* ===== SNS部分 ===== */
+/* SNS */
 .sns-section {
   display: flex;
   justify-content: center;
@@ -89,32 +97,30 @@ img:hover {
   text-decoration: none;
   font-weight: bold;
   transition: 0.3s;
-  box-shadow: 0 8px 15px rgba(0,0,0,0.1);
 }
 
-.sns-box:hover {
-  transform: translateY(-5px);
-}
-
-/* Instagram */
+/* SNS色 */
 .instagram {
   background: linear-gradient(45deg, #f9ce34, #ee2a7b, #6228d7);
   color: #fff;
 }
 
-/* TikTok */
 .tiktok {
   background: #000;
   color: #0ff;
 }
 
-/* X */
 .x {
   background: #000;
   color: #fff;
 }
 
-/* ===== スマホ ===== */
+/* ホバー */
+.sns-box:hover {
+  transform: translateY(-5px);
+}
+
+/* スマホ */
 @media (max-width: 768px) {
   .container {
     flex-direction: column;
@@ -162,7 +168,7 @@ img:hover {
 
 </div>
 
-<!-- ✅ SNS（画像なし版） -->
+<!-- ✅ SNS -->
 <div class="sns-section">
 
   <a href="https://instagram.com" class="sns-box instagram">
