@@ -37,8 +37,8 @@ header {
 }
 
 header a {
-  text-decoration: none;
   color: #fff;
+  text-decoration: none;
   text-align: center;
   font-weight: bold;
 }
@@ -88,9 +88,11 @@ img {
 .sns-box {
   width: 180px;
   height: 110px;
+
   display: flex;
   align-items: center;
   justify-content: center;
+
   border-radius: 15px;
   text-decoration: none;
 
@@ -121,25 +123,6 @@ img {
   text-shadow: 0 0 8px #00f7ff;
 }
 
-/* ✅ 左下ツイート固定 */
-.feed-fixed {
-  position: fixed;
-  left: 40px;
-  bottom: 40px;
-
-  width: 320px;
-  height: 350px;
-
-  border-radius: 15px;
-  overflow: hidden;
-
-  background: rgba(0,0,0,0.6);
-  backdrop-filter: blur(6px);
-
-  border: 1px solid rgba(255,255,255,0.3);
-  box-shadow: 0 10px 30px rgba(0,0,0,0.6);
-}
-
 /* スマホ */
 @media (max-width: 768px) {
   .container {
@@ -154,11 +137,6 @@ img {
   .sns-section {
     flex-direction: column;
     align-items: center;
-  }
-
-  .feed-fixed {
-    position: static;
-    margin: 20px auto;
   }
 }
 </style>
@@ -209,19 +187,6 @@ img {
   </a>
 
 </div>
-
-<!-- ✅ 左下ツイート -->
-<div class="feed-fixed">
-  <a class="twitter-timeline"
-     data-height="350"
-     data-theme="dark"
-     href="https://x.com/matsuu_jp">
-     Tweets by matsuu_jp
-  </a>
-</div>
-
-<!-- ✅ スクリプト -->
-https://platform.twitter.com/widgets.jsscript>
 
 </body>
 </html>
