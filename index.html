@@ -37,8 +37,8 @@ header {
 }
 
 header a {
-  text-decoration: none;
   color: #fff;
+  text-decoration: none;
   text-align: center;
   font-weight: bold;
 }
@@ -88,9 +88,11 @@ img {
 .sns-box {
   width: 180px;
   height: 110px;
+
   display: flex;
   align-items: center;
   justify-content: center;
+
   border-radius: 15px;
   text-decoration: none;
 
@@ -175,7 +177,7 @@ img {
 <div class="container">
 
   <div class="box left">
-    <img src="image1.jpg">
+    image1.jpg
   </div>
 
   <div class="box center">
@@ -188,7 +190,7 @@ img {
   </div>
 
   <div class="box right">
-    <img src="image2.jpg">
+    image2.jpg
   </div>
 
 </div>
@@ -196,7 +198,7 @@ img {
 <!-- ✅ SNS -->
 <div class="sns-section">
 
-  <a href="https://instagram.com" target="_blank" class="sns-box instagram">
+  https://instagram.com
     📸 Instagram
   </a>
 
@@ -210,7 +212,7 @@ img {
 
 </div>
 
-<!-- ✅ 左下ツイート -->
+<!-- ✅ 左下Twitter埋め込み -->
 <div class="feed-fixed">
   <a class="twitter-timeline"
      data-height="350"
@@ -220,8 +222,8 @@ img {
   </a>
 </div>
 
-<!-- ✅ スクリプト -->
-<script src="https://platform.twitter.com/widgets.js"></script>
+<!-- ✅ ★これが超重要（正しいscript） -->
+<script async src="https://platform.twitter.com/widgets.js"></script>
+
 </body>
 </html>
-``
