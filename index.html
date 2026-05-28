@@ -11,14 +11,13 @@ body {
   font-family: "Helvetica Neue", sans-serif;
   color: #fff;
 
-  /* ✅ 背景画像 */
   background-image: url("bg.jpg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
 }
 
-/* ✅ 背景暗くする（これ重要） */
+/* 背景暗くする */
 body::before {
   content: "";
   position: fixed;
@@ -26,7 +25,7 @@ body::before {
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0,0,0,0.5);
+  background: rgba(0,0,0,0.6);
   z-index: -1;
 }
 
@@ -40,8 +39,8 @@ header {
 header a {
   text-decoration: none;
   color: #fff;
-  font-weight: bold;
   text-align: center;
+  font-weight: bold;
 }
 
 /* メイン */
@@ -52,12 +51,12 @@ header a {
   padding: 60px 20px;
 }
 
-/* ボックス */
+/* カード */
 .box {
   background: rgba(255,255,255,0.9);
-  border-radius: 10px;
-  overflow: hidden;
+  border-radius: 12px;
   height: 400px;
+  overflow: hidden;
   color: #333;
 }
 
@@ -79,7 +78,7 @@ img {
   object-fit: cover;
 }
 
-/* SNS */
+/* ✅ SNS（ここ改善ポイント） */
 .sns-section {
   display: flex;
   justify-content: center;
@@ -87,37 +86,46 @@ img {
   padding: 60px 20px;
 }
 
+/* ガラス風ボタン */
 .sns-box {
   width: 180px;
   height: 110px;
-  border-radius: 12px;
+
   display: flex;
   align-items: center;
   justify-content: center;
+
+  border-radius: 15px;
   text-decoration: none;
+
+  /* ここが重要 */
+  background: rgba(0,0,0,0.6);
+  backdrop-filter: blur(6px);
+
+  color: #fff;
   font-weight: bold;
+
+  border: 1px solid rgba(255,255,255,0.3);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.6);
+
   transition: 0.3s;
 }
 
-/* SNS色 */
+/* ホバー */
+.sns-box:hover {
+  transform: translateY(-8px);
+}
+
+/* Instagram */
 .instagram {
   background: linear-gradient(45deg, #f9ce34, #ee2a7b, #6228d7);
   color: #fff;
 }
 
+/* TikTok（見やすく） */
 .tiktok {
-  background: #000;
-  color: #0ff;
-}
-
-.x {
-  background: #000;
-  color: #fff;
-}
-
-/* ホバー */
-.sns-box:hover {
-  transform: translateY(-5px);
+  color: #00f7ff;
+  text-shadow: 0 0 8px #00f7ff;
 }
 
 /* スマホ */
@@ -168,20 +176,18 @@ img {
 
 </div>
 
+<!-- ✅ SNS -->
 <div class="sns-section">
 
-  <!-- Instagram（※まだ仮URLだから後で変えてOK） -->
   <a href="https://instagram.com" target="_blank" class="sns-box instagram">
     📸 Instagram
   </a>
 
-  <!-- TikTok（あなたのアカウント） -->
   <a href="https://www.tiktok.com/@matsutart?lang=ja-JP" target="_blank" class="sns-box tiktok">
     🎵 TikTok
   </a>
 
-  <!-- X（Twitter あなたのアカウント） -->
-  <a href="https://x.com/matsuu_jp" target="_blank" class="sns-box x">
+  <a href="https://x.com/matsuu_jp" target="_blank" class="sns-box">
     ✖ X
   </a>
 
