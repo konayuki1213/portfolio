@@ -9,7 +9,7 @@
 body {
   margin: 0;
   font-family: "Helvetica Neue", sans-serif;
-  background: #fafafa;
+  background: #f5f5f5;
 }
 
 /* ヘッダー */
@@ -18,6 +18,7 @@ header {
   grid-template-columns: 1fr 1fr 1fr;
   padding: 20px;
   border-bottom: 1px solid #ddd;
+  background: #fff;
 }
 
 header a {
@@ -32,7 +33,7 @@ header a {
   display: flex;
 }
 
-/* 左メニュー */
+/* サイドバー */
 .sidebar {
   width: 200px;
   padding: 20px;
@@ -52,7 +53,7 @@ header a {
   color: #fff;
 }
 
-/* ✅ 写真グリッド（サイズ大きくした） */
+/* ギャラリー */
 .gallery {
   flex: 1;
   display: grid;
@@ -61,10 +62,11 @@ header a {
   padding: 30px;
 }
 
+/* 写真 */
 .item {
-  height: 250px; /* ←ここで大きくしてる */
+  aspect-ratio: 16 / 9;
   overflow: hidden;
-  border-radius: 10px;
+  border-radius: 12px;
   cursor: pointer;
 }
 
@@ -84,7 +86,7 @@ header a {
   display: none;
 }
 
-/* ✅ モーダル（拡大表示） */
+/* ✅ モーダル */
 .modal {
   display: none;
   position: fixed;
@@ -97,9 +99,26 @@ header a {
   align-items: center;
 }
 
-.modal img {
-  max-width: 90%;
-  max-height: 90%;
+.modal-content {
+  background: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  max-width: 600px;
+  text-align: center;
+}
+
+.modal-content img {
+  width: 100%;
+  border-radius: 10px;
+}
+
+.modal-content h3 {
+  margin: 10px 0 5px;
+}
+
+.modal-content p {
+  color: #555;
+  font-size: 14px;
 }
 
 /* スマホ */
@@ -125,7 +144,7 @@ header a {
 
 <div class="container">
 
-  <!-- 左メニュー -->
+  <!-- カテゴリー -->
   <div class="sidebar">
     <button onclick="filter('all')">すべて</button>
     <button onclick="filter('portrait')">ポートレート</button>
@@ -139,37 +158,41 @@ header a {
   <!-- ギャラリー -->
   <div class="gallery">
 
-    <div class="item portrait">
-      <img src="image1.jpg" onclick="openModal(this.src)">
+    <div class="item portrait" onclick="openModal('image1.jpg','ルピナス','春の花を綺麗に撮影した一枚')">
+      <img src="image1.jpg">
     </div>
 
-    <div class="item landscape">
-      <img src="image2.jpg" onclick="openModal(this.src)">
+    <div class="item landscape" onclick="openModal('image2.jpg','ネモフィラ','青い花畑が広がる美しい景色')">
+      <img src="image2.jpg">
     </div>
 
-    <div class="item nature">
-      <img src="image1.jpg" onclick="openModal(this.src)">
+    <div class="item nature" onclick="openModal('image1.jpg','自然','色のバランスを意識した作品')">
+      <img src="image1.jpg">
     </div>
 
-    <div class="item still">
-      <img src="image2.jpg" onclick="openModal(this.src)">
+    <div class="item still" onclick="openModal('image2.jpg','静物','落ち着いた雰囲気を表現')">
+      <img src="image2.jpg">
     </div>
 
-    <div class="item snap">
-      <img src="image1.jpg" onclick="openModal(this.src)">
+    <div class="item snap" onclick="openModal('image1.jpg','スナップ','日常の一瞬を切り取る')">
+      <img src="image1.jpg">
     </div>
 
-    <div class="item art">
-      <img src="image2.jpg" onclick="openModal(this.src)">
+    <div class="item art" onclick="openModal('image2.jpg','アート','構図を意識した表現作品')">
+      <img src="image2.jpg">
     </div>
 
   </div>
 
 </div>
 
-<!-- ✅ 拡大表示 -->
+<!-- モーダル -->
 <div class="modal" id="modal" onclick="closeModal()">
-  <img id="modalImg">
+  <div class="modal-content">
+    <img id="modalImg">
+    <h3 id="modalTitle"></h3>
+    <p id="modalDesc"></p>
+  </div>
 </div>
 
 <script>
@@ -189,13 +212,13 @@ function filter(category) {
   });
 }
 
-/* ✅ クリックで拡大 */
-function openModal(src) {
+function openModal(src, title, desc) {
   document.getElementById("modal").style.display = "flex";
   document.getElementById("modalImg").src = src;
+  document.getElementById("modalTitle").textContent = title;
+  document.getElementById("modalDesc").textContent = desc;
 }
 
-/* ✅ 閉じる */
 function closeModal() {
   document.getElementById("modal").style.display = "none";
 }
