@@ -77,25 +77,6 @@ img {
   object-fit: cover;
 }
 
-/* ✅ ツイート */
-.feed-section {
-  display: flex;
-  justify-content: center;
-  padding: 40px 20px;
-}
-
-.feed-box {
-  width: 350px;
-  border-radius: 15px;
-  overflow: hidden;
-
-  background: rgba(0,0,0,0.6);
-  backdrop-filter: blur(6px);
-
-  border: 1px solid rgba(255,255,255,0.3);
-  box-shadow: 0 10px 30px rgba(0,0,0,0.6);
-}
-
 /* ✅ SNS */
 .sns-section {
   display: flex;
@@ -107,11 +88,9 @@ img {
 .sns-box {
   width: 180px;
   height: 110px;
-
   display: flex;
   align-items: center;
   justify-content: center;
-
   border-radius: 15px;
   text-decoration: none;
 
@@ -134,13 +113,31 @@ img {
 /* Instagram */
 .instagram {
   background: linear-gradient(45deg, #f9ce34, #ee2a7b, #6228d7);
-  color: #fff;
 }
 
 /* TikTok */
 .tiktok {
   color: #00f7ff;
   text-shadow: 0 0 8px #00f7ff;
+}
+
+/* ✅ 左下ツイート固定 */
+.feed-fixed {
+  position: fixed;
+  left: 40px;
+  bottom: 40px;
+
+  width: 320px;
+  height: 350px;
+
+  border-radius: 15px;
+  overflow: hidden;
+
+  background: rgba(0,0,0,0.6);
+  backdrop-filter: blur(6px);
+
+  border: 1px solid rgba(255,255,255,0.3);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.6);
 }
 
 /* スマホ */
@@ -157,6 +154,11 @@ img {
   .sns-section {
     flex-direction: column;
     align-items: center;
+  }
+
+  .feed-fixed {
+    position: static;
+    margin: 20px auto;
   }
 }
 </style>
@@ -191,18 +193,6 @@ img {
 
 </div>
 
-<!-- ✅ X タイムライン -->
-<div class="feed-section">
-  <div class="feed-box">
-    <a class="twitter-timeline"
-       data-height="400"
-       data-theme="dark"
-       href="https://x.com/matsuu_jp">
-       Tweets by matsuu_jp
-    </a>
-  </div>
-</div>
-
 <!-- ✅ SNS -->
 <div class="sns-section">
 
@@ -220,8 +210,19 @@ img {
 
 </div>
 
-<!-- ✅ Twitterスクリプト -->
+<!-- ✅ 左下ツイート -->
+<div class="feed-fixed">
+  <a class="twitter-timeline"
+     data-height="350"
+     data-theme="dark"
+     href="https://x.com/matsuu_jp">
+     Tweets by matsuu_jp
+  </a>
+</div>
+
+<!-- ✅ スクリプト -->
 <script async src="https://platform.twitter.com/widgets.js"></script>
 
 </body>
 </html>
+``
