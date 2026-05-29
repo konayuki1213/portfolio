@@ -24,7 +24,6 @@ header a {
   text-align: center;
   color: #fff;
   text-decoration: none;
-  font-size: 16px;
   letter-spacing: 3px;
 }
 
@@ -40,13 +39,12 @@ header a {
 }
 
 .sidebar button {
-  display: block;
   width: 100%;
   margin-bottom: 10px;
   padding: 12px;
   background: none;
   border: none;
-  color: #aaa;
+  color: #888;
   text-align: left;
   cursor: pointer;
   transition: 0.3s;
@@ -65,11 +63,27 @@ header a {
   padding: 30px;
 }
 
+/* ✅ ふわっと表示 */
 .item {
   aspect-ratio: 16 / 9;
   overflow: hidden;
   border-radius: 10px;
   cursor: pointer;
+
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fadeUp 0.8s forwards;
+}
+
+.item:nth-child(1) { animation-delay: 0.1s; }
+.item:nth-child(2) { animation-delay: 0.2s; }
+.item:nth-child(3) { animation-delay: 0.3s; }
+
+@keyframes fadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .item img {
@@ -96,9 +110,24 @@ header a {
   align-items: center;
 }
 
-.modal img {
-  max-width: 90%;
-  max-height: 90%;
+/* ✅ 作品表示 */
+.modal-content {
+  text-align: center;
+  max-width: 700px;
+}
+
+.modal-content img {
+  width: 100%;
+  border-radius: 10px;
+}
+
+.modal-content h3 {
+  margin-top: 15px;
+}
+
+.modal-content p {
+  color: #aaa;
+  font-size: 14px;
 }
 
 /* 非表示 */
@@ -140,15 +169,15 @@ header a {
   <!-- ギャラリー -->
   <div class="gallery">
 
-    <div class="item nature" onclick="openModal('image1.jpg')">
+    <div class="item nature" onclick="openModal('image1.jpg','ルピナス','春に撮影した作品。色のグラデーションが印象的。')">
       <img src="image1.jpg">
     </div>
 
-    <div class="item snap" onclick="openModal('image2.jpg')">
+    <div class="item snap" onclick="openModal('image2.jpg','ネモフィラ畑','青が広がる幻想的な風景。')">
       <img src="image2.jpg">
     </div>
 
-    <div class="item art" onclick="openModal('image1.jpg')">
+    <div class="item art" onclick="openModal('image1.jpg','抽象作品','構図と色のバランスを意識して表現。')">
       <img src="image1.jpg">
     </div>
 
@@ -156,9 +185,13 @@ header a {
 
 </div>
 
-<!-- モーダル -->
+<!-- ✅ モーダル -->
 <div class="modal" id="modal" onclick="closeModal()">
-  <img id="modalImg">
+  <div class="modal-content">
+    <img id="modalImg">
+    <h3 id="modalTitle"></h3>
+    <p id="modalDesc"></p>
+  </div>
 </div>
 
 <script>
@@ -178,11 +211,15 @@ function filter(category) {
   });
 }
 
-function openModal(src) {
+/* ✅ クリックで詳細表示 */
+function openModal(src, title, desc) {
   document.getElementById("modal").style.display = "flex";
   document.getElementById("modalImg").src = src;
+  document.getElementById("modalTitle").textContent = title;
+  document.getElementById("modalDesc").textContent = desc;
 }
 
+/* 閉じる */
 function closeModal() {
   document.getElementById("modal").style.display = "none";
 }
