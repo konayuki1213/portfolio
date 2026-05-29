@@ -9,23 +9,23 @@
 body {
   margin: 0;
   font-family: "Helvetica Neue", sans-serif;
-  background: #f5f5f5;
+  background: #111;
+  color: #fff;
 }
 
-/* ヘッダー */
+/* ナビ */
 header {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  padding: 20px;
-  border-bottom: 1px solid #ddd;
-  background: #fff;
+  padding: 30px;
 }
 
 header a {
   text-align: center;
+  color: #fff;
   text-decoration: none;
-  color: #000;
-  font-weight: bold;
+  font-size: 16px;
+  letter-spacing: 3px;
 }
 
 /* レイアウト */
@@ -40,16 +40,19 @@ header a {
 }
 
 .sidebar button {
+  display: block;
   width: 100%;
-  padding: 10px;
   margin-bottom: 10px;
+  padding: 12px;
+  background: none;
   border: none;
-  background: #eee;
+  color: #aaa;
+  text-align: left;
   cursor: pointer;
+  transition: 0.3s;
 }
 
 .sidebar button:hover {
-  background: #000;
   color: #fff;
 }
 
@@ -58,15 +61,14 @@ header a {
   flex: 1;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 25px;
+  gap: 20px;
   padding: 30px;
 }
 
-/* 写真 */
 .item {
   aspect-ratio: 16 / 9;
   overflow: hidden;
-  border-radius: 12px;
+  border-radius: 10px;
   cursor: pointer;
 }
 
@@ -81,12 +83,7 @@ header a {
   transform: scale(1.08);
 }
 
-/* 非表示 */
-.hidden {
-  display: none;
-}
-
-/* ✅ モーダル */
+/* モーダル */
 .modal {
   display: none;
   position: fixed;
@@ -94,31 +91,19 @@ header a {
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0,0,0,0.8);
+  background: rgba(0,0,0,0.9);
   justify-content: center;
   align-items: center;
 }
 
-.modal-content {
-  background: #fff;
-  padding: 20px;
-  border-radius: 10px;
-  max-width: 600px;
-  text-align: center;
+.modal img {
+  max-width: 90%;
+  max-height: 90%;
 }
 
-.modal-content img {
-  width: 100%;
-  border-radius: 10px;
-}
-
-.modal-content h3 {
-  margin: 10px 0 5px;
-}
-
-.modal-content p {
-  color: #555;
-  font-size: 14px;
+/* 非表示 */
+.hidden {
+  display: none;
 }
 
 /* スマホ */
@@ -137,49 +122,34 @@ header a {
 <body>
 
 <header>
-  <a href="portfolio.html">ポートフォリオ</a>
+  <a href="portfolio.html">PORTFOLIO</a>
   <a href="index.html">TOP</a>
   <a href="blog.html">BLOG</a>
 </header>
 
 <div class="container">
 
-  <!-- カテゴリー -->
+  <!-- カテゴリ -->
   <div class="sidebar">
-    <button onclick="filter('all')">すべて</button>
-    <button onclick="filter('portrait')">ポートレート</button>
-    <button onclick="filter('landscape')">風景</button>
-    <button onclick="filter('nature')">自然</button>
-    <button onclick="filter('still')">静物</button>
-    <button onclick="filter('snap')">スナップ</button>
-    <button onclick="filter('art')">アート</button>
+    <button onclick="filter('all')">ALL</button>
+    <button onclick="filter('nature')">NATURE</button>
+    <button onclick="filter('snap')">SNAP</button>
+    <button onclick="filter('art')">ART</button>
   </div>
 
   <!-- ギャラリー -->
   <div class="gallery">
 
-    <div class="item portrait" onclick="openModal('image1.jpg','ルピナス','春の花を綺麗に撮影した一枚')">
+    <div class="item nature" onclick="openModal('image1.jpg')">
       <img src="image1.jpg">
     </div>
 
-    <div class="item landscape" onclick="openModal('image2.jpg','ネモフィラ','青い花畑が広がる美しい景色')">
+    <div class="item snap" onclick="openModal('image2.jpg')">
       <img src="image2.jpg">
     </div>
 
-    <div class="item nature" onclick="openModal('image1.jpg','自然','色のバランスを意識した作品')">
+    <div class="item art" onclick="openModal('image1.jpg')">
       <img src="image1.jpg">
-    </div>
-
-    <div class="item still" onclick="openModal('image2.jpg','静物','落ち着いた雰囲気を表現')">
-      <img src="image2.jpg">
-    </div>
-
-    <div class="item snap" onclick="openModal('image1.jpg','スナップ','日常の一瞬を切り取る')">
-      <img src="image1.jpg">
-    </div>
-
-    <div class="item art" onclick="openModal('image2.jpg','アート','構図を意識した表現作品')">
-      <img src="image2.jpg">
     </div>
 
   </div>
@@ -188,11 +158,7 @@ header a {
 
 <!-- モーダル -->
 <div class="modal" id="modal" onclick="closeModal()">
-  <div class="modal-content">
-    <img id="modalImg">
-    <h3 id="modalTitle"></h3>
-    <p id="modalDesc"></p>
-  </div>
+  <img id="modalImg">
 </div>
 
 <script>
@@ -212,11 +178,9 @@ function filter(category) {
   });
 }
 
-function openModal(src, title, desc) {
+function openModal(src) {
   document.getElementById("modal").style.display = "flex";
   document.getElementById("modalImg").src = src;
-  document.getElementById("modalTitle").textContent = title;
-  document.getElementById("modalDesc").textContent = desc;
 }
 
 function closeModal() {
