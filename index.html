@@ -33,15 +33,23 @@ body::before {
 header {
   display: flex;
   justify-content: center;
-  gap: 60px;
-  padding: 25px;
-  letter-spacing: 2px;
+  gap: 80px;
+  padding: 30px;
+  letter-spacing: 4px;
 }
 
 header a {
   color: #fff;
   text-decoration: none;
-  font-size: 14px;
+  font-size: 18px;
+  font-weight: 500;
+  transition: 0.3s;
+}
+
+/* ✅ これ追加（ホバーでおしゃれ） */
+header a:hover {
+  opacity: 0.6;
+  transform: translateY(-2px);
 }
 
 /* メイン */
