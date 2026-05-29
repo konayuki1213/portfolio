@@ -31,28 +31,27 @@ body::before {
 
 /* ヘッダー */
 
+
 header {
-  display: flex;
-  justify-content: space-evenly; /* ←ここ変更 */
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
   padding: 30px;
   letter-spacing: 4px;
 }
 
-
 header a {
-  color: #fff;
-  text-decoration: none;
+  text-align: center;
   font-size: 18px;
   font-weight: 500;
+  color: #fff;
+  text-decoration: none;
   transition: 0.3s;
 }
 
-/* ✅ これ追加（ホバーでおしゃれ） */
 header a:hover {
   opacity: 0.6;
   transform: translateY(-2px);
 }
-
 /* メイン */
 .main {
   height: 70vh;
