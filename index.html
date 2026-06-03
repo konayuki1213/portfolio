@@ -17,7 +17,7 @@ body {
   background-repeat: no-repeat;
 }
 
-/* 背景暗くして雰囲気 */
+/* 背景暗く */
 body::before {
   content: "";
   position: fixed;
@@ -29,9 +29,7 @@ body::before {
   z-index: -1;
 }
 
-/* ヘッダー */
-
-
+/* ✅ ナビ（完全安定版） */
 header {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
@@ -41,19 +39,21 @@ header {
 
 header a {
   text-align: center;
-  font-size: 18px;
+  font-size: 20px;
   font-weight: 500;
   color: #fff;
   text-decoration: none;
   transition: 0.3s;
+  text-shadow: 0 0 8px rgba(255,255,255,0.4);
 }
 
+/* ホバー */
 header a:hover {
   opacity: 0.6;
   transform: translateY(-2px);
 }
 
-
+/* 下線アニメ */
 header a::after {
   content: "";
   display: block;
@@ -68,18 +68,7 @@ header a:hover::after {
   width: 100%;
 }
 
-
-header {
-  margin-top: 10px;
-}
-
-
-header a {
-  text-shadow: 0 0 8px rgba(255,255,255,0.4);
-}
-
-
-/* メイン */
+/* ✅ メイン */
 .main {
   height: 70vh;
   display: flex;
@@ -87,40 +76,23 @@ header a {
   justify-content: center;
 }
 
-/* カード */
+/* ✅ カード */
 .card {
-  max-width: 520px;
+  max-width: 580px;
   padding: 40px;
-  background: rgba(255,255,255,0.12);
+  background: rgba(255,255,255,0.15);
   backdrop-filter: blur(10px);
   border-radius: 20px;
   text-align: center;
 }
 
-
-.card {
-  background: rgba(255,255,255,0.15);
-}
-
-.card {
-  max-width: 580px;
-}
-
-
-/* タイトル */
-.card h1 {
-  font-size: 22px;
-  margin-bottom: 25px;
-}
-
-/* テキスト */
 .card p {
   font-size: 14px;
   line-height: 2;
   color: #ddd;
 }
 
-/* SNS */
+/* ✅ SNS */
 .sns-section {
   display: flex;
   justify-content: center;
@@ -128,7 +100,6 @@ header a {
   padding: 40px;
 }
 
-/* ボタン */
 .sns-box {
   width: 160px;
   height: 100px;
@@ -151,7 +122,6 @@ header a {
   transition: 0.3s;
 }
 
-/* ホバー */
 .sns-box:hover {
   transform: translateY(-8px) scale(1.08);
 }
@@ -165,11 +135,6 @@ header a {
 .tiktok {
   color: #00f7ff;
   text-shadow: 0 0 8px #00f7ff;
-}
-
-/* X */
-.x {
-  letter-spacing: 2px;
 }
 
 /* スマホ */
@@ -186,7 +151,7 @@ header a {
 
 <header>
   <a href="portfolio.html">PORTFOLIO</a>
-  <a href="index.html">TOP</a>
+  <a href="index.html" style="font-weight:700;">TOP</a>
   <a href="blog.html">BLOG</a>
 </header>
 
@@ -213,14 +178,11 @@ header a {
     TikTok
   </a>
 
-  <a href="https://x.com/matsuu_jp" class="sns-box x" target="_blank">
+  <a href="https://x.com/matsuu_jp" class="sns-box" target="_blank">
     X
   </a>
-
-<a href="index.html" style="font-weight:700;">TOP</a>
 
 </div>
 
 </body>
 </html>
-``
