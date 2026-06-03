@@ -52,6 +52,22 @@ header a:hover {
   opacity: 0.6;
   transform: translateY(-2px);
 }
+
+
+header a::after {
+  content: "";
+  display: block;
+  width: 0;
+  height: 2px;
+  background: #fff;
+  margin-top: 5px;
+  transition: 0.3s;
+}
+
+header a:hover::after {
+  width: 100%;
+}
+
 /* メイン */
 .main {
   height: 70vh;
@@ -116,7 +132,7 @@ header a:hover {
 
 /* ホバー */
 .sns-box:hover {
-  transform: translateY(-8px) scale(1.05);
+  transform: translateY(-8px) scale(1.08);
 }
 
 /* Instagram */
