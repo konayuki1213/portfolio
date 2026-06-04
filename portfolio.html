@@ -27,8 +27,6 @@ header a {
   letter-spacing: 3px;
 }
 
-
-
 /* レイアウト */
 .container {
   display: flex;
@@ -65,16 +63,28 @@ header a {
   padding: 30px;
 }
 
-/* ✅ ふわっと表示 */
+/* ✅ カード */
 .item {
+  position: relative;
   aspect-ratio: 16 / 9;
   overflow: hidden;
   border-radius: 10px;
   cursor: pointer;
 
+  /* ここが追加部分👇 */
+  background: rgba(255,255,255,0.08);
+  backdrop-filter: blur(6px);
+  padding: 5px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+
+  /* アニメーション */
   opacity: 0;
   transform: translateY(30px);
   animation: fadeUp 0.8s forwards;
+}
+
+.item:hover {
+  transform: translateY(-8px) scale(1.02);
 }
 
 .item:nth-child(1) { animation-delay: 0.1s; }
@@ -112,7 +122,6 @@ header a {
   align-items: center;
 }
 
-/* ✅ 作品表示 */
 .modal-content {
   text-align: center;
   max-width: 700px;
@@ -160,7 +169,6 @@ header a {
 
 <div class="container">
 
-  <!-- カテゴリ -->
   <div class="sidebar">
     <button onclick="filter('all')">ALL</button>
     <button onclick="filter('nature')">NATURE</button>
@@ -168,58 +176,32 @@ header a {
     <button onclick="filter('art')">ART</button>
   </div>
 
-  <!-- ギャラリー -->
   <div class="gallery">
 
-    <div class="item nature" onclick="openModal('image1.jpg','昭和記念公園','秋に撮影した作品。きれいな紅葉。')">
+    <div class="item nature" onclick="openModal('image1.jpg','昭和記念公園','秋に撮影した作品。')">
       <img src="image1.jpg">
     </div>
 
-    <div class="item snap" onclick="openModal('image2.jpg','昭和記念公園','青と紅葉が広がる幻想的な風景。')">
+    <div class="item snap" onclick="openModal('image2.jpg','昭和記念公園','幻想的な風景。')">
       <img src="image2.jpg">
     </div>
 
-<div class="item nature" onclick="openModal('image3.jpg','昭和記念公園','秋に撮影した作品。')">
-  <img src="image3.jpg">
-</div>
+    <div class="item nature" onclick="openModal('image3.jpg','昭和記念公園','秋の作品')">
+      <img src="image3.jpg">
+    </div>
 
-<div class="item nature" onclick="openModal('image4.jpg','昭和記念公園','秋に撮影した作品。')">
-  <img src="image4.jpg">
-</div>
+    <div class="item art" onclick="openModal('image5.jpg','彫刻の森美術館','冬の作品')">
+      <img src="image5.jpg">
+    </div>
 
-<div class="item art" onclick="openModal('image5.jpg','彫刻の森美術館','冬に撮影した作品。')">
-  <img src="image5.jpg">
-</div>
-
-<div class="item snap" onclick="openModal('image6.jpg','箱根神社','冬に撮影した作品。')">
-  <img src="image6.jpg">
-</div>
-
-<div class="item nature" onclick="openModal('image7.jpg','ソレイユの丘 ネモフィラ','春に撮影した作品。')">
-  <img src="image7.jpg">
-</div>
-
-<div class="item nature" onclick="openModal('image8.jpg','ソレイユの丘 羊たち','春に撮影した作品。')">
-  <img src="image8.jpg">
-</div>
-
-<div class="item nature" onclick="openModal('image9.jpg','花菜ガーデン','夏に撮影した作品。')">
-  <img src="image9.jpg">
-</div>
-
-<div class="item nature" onclick="openModal('image10.jpg','花菜ガーデン','夏に撮影した作品。')">
-  <img src="image10.jpg">
-</div>
-
-<div class="item snap" onclick="openModal('image11.jpg','奈良井宿','夏に撮影した作品。')">
-  <img src="image11.jpg">
-</div>
+    <div class="item snap" onclick="openModal('image6.jpg','箱根神社','冬の作品')">
+      <img src="image6.jpg">
+    </div>
 
   </div>
 
 </div>
 
-<!-- ✅ モーダル -->
 <div class="modal" id="modal" onclick="closeModal()">
   <div class="modal-content">
     <img id="modalImg">
@@ -245,7 +227,6 @@ function filter(category) {
   });
 }
 
-/* ✅ クリックで詳細表示 */
 function openModal(src, title, desc) {
   document.getElementById("modal").style.display = "flex";
   document.getElementById("modalImg").src = src;
@@ -253,39 +234,10 @@ function openModal(src, title, desc) {
   document.getElementById("modalDesc").textContent = desc;
 }
 
-/* 閉じる */
 function closeModal() {
   document.getElementById("modal").style.display = "none";
 }
 </script>
 
-.item {
-  background: rgba(255,255,255,0.05);
-  backdrop-filter: blur(6px);
-  padding: 5px;
-}
-
-
-.item:hover {
-  transform: translateY(-8px)scale(1.02);
-}
-
-
-.item {
-  box-shadow: 0 10px 25px rgba(0,0,0,0.5);
-}
-
-
-.item {
-  background: rgba(255,255,255,0.08);
-}
-
-
-
-
-
-
-
 </body>
 </html>
-
