@@ -153,7 +153,7 @@ header a {
 <header>
   <a href="portfolio.html">PORTFOLIO</a>
   <a href="index.html">TOP</a>
-  <a href="blog.html">BLOG</a>
+  <a href="about.html">ABOUT</a>
 </header>
 
 <div class="container">
@@ -277,6 +277,17 @@ function closeModal() {
 .item {
   background: rgba(255,255,255,0.08);
 }
+
+header a::after {
+  content: "";
+  display: block;
+  width: 0;
+  height: 2px;
+  background: #fff;
+  margin-top: 5px;
+  transition: 0.3s;
+}
+
 
 
 
