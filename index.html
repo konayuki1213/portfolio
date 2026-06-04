@@ -25,138 +25,140 @@ header a {
   color: #fff;
   text-decoration: none;
   letter-spacing: 3px;
-  transition: 0.3s;
 }
 
-header a:hover {
-  opacity: 0.6;
-  transform: translateY(-2px);
-}
-
-header a::after {
-  content: "";
-  display: block;
-  width: 0;
-  height: 2px;
-  background: #fff;
-  margin-top: 5px;
-  transition: 0.3s;
-}
-
-header a:hover::after {
-  width: 100%;
-}
-
-/* メイン */
+/* ✅ メイン */
 .main {
   display: flex;
   gap: 60px;
-  max-width: 1200px;
+  max-width: 1400px;
   margin: 0 auto;
-  padding: 70px;
-  align-items: center;
+
+  padding: 40px 60px 60px;
+  align-items: flex-start;
 }
 
-/* 左スライド */
+/* 左 */
 .left {
   flex: 1;
-  position: relative;
-  height: 520px;
-  overflow: hidden;
 }
 
+/* タイトル */
+.title {
+  font-size: 42px;
+  margin-bottom: 10px;
+}
+
+.subtitle {
+  color: #888;
+  margin-bottom: 30px;
+}
+
+/* ✅ スライダー */
+.slider {
+  position: relative;
+  width: 100%;
+  height: 450px;
+  overflow: hidden;
+  border-radius: 16px;
+}
+
+/* スライド */
 .slide {
   position: absolute;
   width: 100%;
   height: 100%;
   object-fit: cover;
-  border-radius: 16px;
+
   opacity: 0;
-  transform: scale(1.05);
-  transition: opacity 1s, transform 3s;
+  transition: opacity 1s;
 }
 
 .slide.active {
   opacity: 1;
-  transform: scale(1);
 }
 
-/* 右 */
+/* ✅ 右 */
 .right {
-  width: 420px;
+  width: 360px;
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 25px;
+
+  margin-top: 160px;   /* ←ここでバランス調整🔥 */
 }
 
-/* 共通カード */
+/* カード */
 .card {
-  background: rgba(255,255,255,0.08);
-  border-radius: 16px;
-  transition: 0.3s;
-  padding: 20px;
-}
-
-.card:hover {
-  transform: translateY(-6px);
-}
-
-/* SNSカード */
-.sns-card {
   display: flex;
   align-items: center;
   gap: 15px;
+
+  padding: 20px;
+  border-radius: 16px;
+
   text-decoration: none;
   color: #aaa;
+
+  background: rgba(255,255,255,0.05);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255,255,255,0.1);
+
+  transition: 0.3s;
 }
 
-/* 丸アイコン */
-.sns-icon {
+.card:hover {
+  transform: translateY(-5px);
+  color: #fff;
+}
+
+/* アイコン */
+.icon {
   width: 50px;
   height: 50px;
   border-radius: 50%;
   overflow: hidden;
 }
 
-.sns-icon img {
+.icon img {
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
 
 /* テキスト */
-.sns-text {
+.text {
   display: flex;
   flex-direction: column;
 }
 
-.sns-title {
-  color: #fff;
+.text-title {
   font-size: 16px;
-  margin-bottom: 4px;
+  color: #fff;
 }
 
-.sns-desc {
+.text-desc {
   font-size: 14px;
 }
 
-/* ホバー */
-.sns-card:hover {
-  color: #fff;
-}
-
-/* スマホ */
+/* ✅ スマホ */
 @media (max-width: 768px) {
+
   .main {
     flex-direction: column;
-    padding: 40px;
+    padding: 30px;
   }
 
   .right {
     width: 100%;
+    margin-top: 0;
   }
 
-  .left {
+  .title {
+    font-size: 32px;
+  }
+
+  .slider {
     height: 300px;
   }
 }
@@ -173,81 +175,69 @@ header a:hover::after {
 
 <div class="main">
 
-  <!-- ✅ 左：スライド -->
+  <!-- 左 -->
   <div class="left">
-    <img src="image1.jpg" class="slide active">
-    <img src="image2.jpg" class="slide">
-    <img src="image3.jpg" class="slide">
+
+    <h1 class="title">Welcome</h1>
+    <p class="subtitle">まつたの写真館へ</p>
+
+    <!-- ✅ スライド -->
+    <div class="slider">
+      <img src="image1.jpg" class="slide active">
+      <img src="image2.jpg" class="slide">
+      <img src="image3.jpg" class="slide">
+    </div>
+
   </div>
 
-  <!-- ✅ 右 -->
+  <!-- 右 -->
   <div class="right">
 
-    <!-- X -->
-    <div class="card">
-      <a href="https://x.com/matsuu_jp" target="_blank" class="sns-card">
-        <div class="sns-icon">
-          <img src="x.jpg">
-        </div>
-        <div class="sns-text">
-          <div class="sns-title">X (Twitter)</div>
-          <div class="sns-desc">@matsuu_jp の投稿を見る</div>
-        </div>
-      </a>
-    </div>
+    <a href="https://x.com/matsuu_jp" class="card">
+      <div class="icon"><img src="x.jpg"></div>
+      <div class="text">
+        <div class="text-title">X (Twitter)</div>
+        <div class="text-desc">@matsuu_jp の投稿</div>
+      </div>
+    </a>
 
-    <!-- Instagram -->
-    <div class="card">
-      <a href="https://instagram.com" target="_blank" class="sns-card">
-        <div class="sns-icon">
-          <img src="insta.jpg">
-        </div>
-        <div class="sns-text">
-          <div class="sns-title">Instagram</div>
-          <div class="sns-desc">写真を見る</div>
-        </div>
-      </a>
-    </div>
+    <a href="https://instagram.com" class="card">
+      <div class="icon"><img src="insta.jpg"></div>
+      <div class="text">
+        <div class="text-title">Instagram</div>
+        <div class="text-desc">写真を見る</div>
+      </div>
+    </a>
 
-    <!-- TikTok -->
-    <div class="card">
-      <a href="https://www.tiktok.com/@matsutart" target="_blank" class="sns-card">
-        <div class="sns-icon">
-          <img src="tiktok.jpg">
-        </div>
-        <div class="sns-text">
-          <div class="sns-title">TikTok</div>
-          <div class="sns-desc">動画を見る</div>
-        </div>
-      </a>
-    </div>
+    <a href="https://www.tiktok.com/@matsutart" class="card">
+      <div class="icon"><img src="tiktok.jpg"></div>
+      <div class="text">
+        <div class="text-title">TikTok</div>
+        <div class="text-desc">動画を見る</div>
+      </div>
+    </a>
 
-    <!-- NOTE -->
-    <div class="card">
-      <a href="https://note.com/matsuta_jp" target="_blank" class="sns-card">
-        <div class="sns-icon">
-          <img src="note.jpg">
-        </div>
-        <div class="sns-text">
-          <div class="sns-title">NOTE</div>
-          <div class="sns-desc">記事を読む</div>
-        </div>
-      </a>
-    </div>
+    <a href="https://note.com/matsuta_jp" class="card">
+      <div class="icon"><img src="note.jpg"></div>
+      <div class="text">
+        <div class="text-title">NOTE</div>
+        <div class="text-desc">記事を読む</div>
+      </div>
+    </a>
 
   </div>
 
 </div>
 
-<!-- スライド -->
+<!-- ✅ スライドJS -->
 <script>
 const slides = document.querySelectorAll(".slide");
-let current = 0;
+let index = 0;
 
 setInterval(() => {
-  slides[current].classList.remove("active");
-  current = (current + 1) % slides.length;
-  slides[current].classList.add("active");
+  slides[index].classList.remove("active");
+  index = (index + 1) % slides.length;
+  slides[index].classList.add("active");
 }, 3000);
 </script>
 
