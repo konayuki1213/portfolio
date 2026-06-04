@@ -28,13 +28,10 @@ header a {
   transition: 0.3s;
 }
 
-/* ホバー */
 header a:hover {
   opacity: 0.6;
-  transform: translateY(-2px);
 }
 
-/* 下線アニメ */
 header a::after {
   content: "";
   display: block;
@@ -49,38 +46,69 @@ header a:hover::after {
   width: 100%;
 }
 
-/* メイン */
-.main {
-  max-width: 700px;
-  margin: 120px auto;
-  padding: 20px;
+/* ✅ レイアウト（大きく調整） */
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 120px;             /* ←広げた */
+  padding: 120px;         /* ←広げた */
 }
 
-/* タイトル */
+/* ✅ 写真（大きく） */
+.photo {
+  width: 420px;           /* ←大きく */
+  height: 520px;          /* ←大きく */
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* ✅ テキスト */
+.text {
+  max-width: 460px;
+}
+
+/* タイトル（大きく） */
 h1 {
-  font-size: 28px;
   margin-bottom: 40px;
+  font-size: 32px;        /* ←大きく */
   letter-spacing: 2px;
 }
 
-/* テキスト */
+/* 本文（少し大きく） */
 p {
   line-height: 2;
   color: #bbb;
-  font-size: 15px;
+  font-size: 16px;        /* ←大きく */
 }
 
+/* ✅ SNS */
+.sns {
+  margin-top: 40px;
+  display: flex;
+  gap: 25px;
+}
 
-<div class="sns-section">
+/* アイコン */
+.icon {
+  color: #777;
+  transition: 0.3s;
+}
 
-  <a href="https://instagram.com" target="_blank" class="sns-link">Instagram</a>
+.icon svg {
+  width: 28px;            /* ←大きく */
+}
 
-  <a href="https://www.tiktok.com/@matsutart?lang=ja-JP" target="_blank" class="sns-link">TikTok</a>
-
-  <a href="https://x.com/matsuu_jp" target="_blank" class="sns-link">X</a>
-
-</div>
-
+.icon:hover {
+  color: #fff;
+  transform: translateY(-4px);
+}
 </style>
 </head>
 
@@ -92,19 +120,58 @@ p {
   <a href="about.html" style="font-weight:700;">ABOUT</a>
 </header>
 
-<div class="main">
-  <h1>ABOUT</h1>
+<div class="container">
 
-  <p>
-    ご覧いただきありがとうございます。<br><br>
+  <!-- 写真 -->
+  <div class="photo">
+    <img src="image11.jpg">
+  </div>
 
-    日々、写真の撮影と編集を行っています。<br><br>
+  <!-- テキスト -->
+  <div class="text">
 
-    このサイトでは、<br>
-    これまでに撮影した作品をまとめています。<br><br>
+    <h1>ABOUT</h1>
 
-    シンプルで伝わる表現を大切にしています。
-  </p>
+    <p>
+      ご覧いただきありがとうございます。<br><br>
+
+      日々、写真の撮影と編集を行っています。<br><br>
+
+      このサイトでは、
+      これまでに撮影した作品をまとめています。
+    </p>
+
+    <!-- SNSアイコン -->
+    <div class="sns">
+
+      <!-- X -->
+      <a href="https://x.com/matsuu_jp" target="_blank" class="icon">
+        <svg viewBox="0 0 24 24">
+          <path fill="currentColor"
+          d="M18.244 2H21.5L14.75 10.05L22.5 22H16.5L11.7 14.8L5.5 22H2.25L9.4 13.5L2 2H8.2L12.6 8.6L18.244 2Z"/>
+        </svg>
+      </a>
+
+      <!-- Instagram -->
+      <a href="https://instagram.com" target="_blank" class="icon">
+        <svg viewBox="0 0 24 24">
+          <path fill="currentColor"
+          d="M7 2C4.2 2 2 4.2 2 7V17C2 19.8 4.2 22 7 22H17C19.8 22 22 19.8 22 17V7C22 4.2 19.8 2 17 2H7ZM12 7C14.8 7 17 9.2 17 12C17 14.8 14.8 17 12 17C9.2 17 7 14.8 7 12C7 9.2 9.2 7 12 7Z"/>
+        </svg>
+      </a>
+
+      <!-- TikTok -->
+      <a href="https://www.tiktok.com/@matsutart" target="_blank" class="icon">
+        <svg viewBox="0 0 24 24">
+          <path fill="currentColor"
+          d="M16 3C16.5 5.5 18.5 7.5 21 8V11C19.3 11 17.8 10.5 16.5 9.6V16C16.5 19.3 13.8 22 10.5 22C7.2 22 4.5 19.3 4.5 16C4.5 12.7 7.2 10 10.5 10C11 10 11.5 10.1 12 10.2V13C11.6 12.8 11.1 12.7 10.5 12.7C8.8 12.7 7.5 14 7.5 15.7C7.5 17.4 8.8 18.7 10.5 18.7C12.2 18.7 13.5 17.4 13.5 15.7V3H16Z"/>
+        </svg>
+      </a>
+
+    </div>
+
+  </div>
+
 </div>
 
 </body>
