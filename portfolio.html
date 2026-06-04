@@ -47,34 +47,40 @@ header a:hover::after {
   width: 100%;
 }
 
-/* ✅ 全体（ここが重要） */
+/* ✅ 全体 */
 .container {
   display: flex;
-  max-width: 1500px;   /* ← 小ささ解決 */
-  margin: 0 auto;      /* ← 中央揃え */
+  max-width: 1500px;
+  margin: 0 auto;
 }
 
-/* サイドバー */
+/* ✅ サイドバー */
 .sidebar {
-  width: 160px;
-  padding: 20px;
+  width: 180px;
+  padding: 30px 20px;
 }
 
 .sidebar button {
   width: 100%;
-  margin-bottom: 12px;
-  padding: 8px;
+  margin-bottom: 20px;
+  padding: 12px;
+
   background: none;
   border: none;
-  color: #888;
+
+  color: #aaa;
   text-align: left;
   cursor: pointer;
-  font-size: 14px;
+
+  font-size: 22px;   /* 🔥大きい */
+  letter-spacing: 2px;
+
   transition: 0.3s;
 }
 
 .sidebar button:hover {
   color: #fff;
+  transform: translateX(6px);
 }
 
 /* ✅ ギャラリー */
@@ -82,8 +88,10 @@ header a:hover::after {
   flex: 1;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 25px;   /* ← 高級感 */
+  gap: 25px;
   padding: 30px;
+
+  min-height: 70vh;   /* 🔥ズレ防止（今回の核心） */
 }
 
 /* カード */
@@ -100,7 +108,6 @@ header a:hover::after {
   transform: translateY(-8px) scale(1.03);
 }
 
-/* 画像 */
 .item img {
   width: 100%;
   height: 100%;
@@ -112,7 +119,7 @@ header a:hover::after {
   transform: scale(1.08);
 }
 
-/* フィルター用 */
+/* 非表示 */
 .hidden {
   display: none;
 }
@@ -124,38 +131,24 @@ header a:hover::after {
     flex-direction: column;
   }
 
-  /* 横並び（改善済み） */
   .sidebar {
     width: 100%;
     display: flex;
     justify-content: center;
     gap: 20px;
-    padding: 15px 10px;
+    padding: 15px;
   }
 
-
-.sidebar button {
-  width: 100%;
-  margin-bottom: 12px;
-  padding: 10px;
-  background: none;
-  border: none;
-  color: #888;
-  text-align: left;
-  cursor: pointer;
-
-  font-size: 17px;     /* 🔥 大きくする */
-  letter-spacing: 1px; /* ちょいおしゃれ */
-  transition: 0.3s;
-}
-
+  .sidebar button {
+    width: auto;
+    font-size: 16px;
+  }
 
   .gallery {
     grid-template-columns: repeat(2, 1fr);
     gap: 15px;
     padding: 20px;
   }
-
 }
 </style>
 </head>
@@ -180,7 +173,6 @@ header a:hover::after {
 
   <!-- ギャラリー -->
   <div class="gallery">
-
     <div class="item nature"><img src="image1.jpg"></div>
     <div class="item snap"><img src="image2.jpg"></div>
     <div class="item nature"><img src="image3.jpg"></div>
@@ -195,7 +187,6 @@ header a:hover::after {
 
     <div class="item nature"><img src="image10.jpg"></div>
     <div class="item snap"><img src="image11.jpg"></div>
-
   </div>
 
 </div>
