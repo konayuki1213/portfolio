@@ -3,57 +3,35 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Portfolio</title>
+<title>Home</title>
 
 <style>
 body {
   margin: 0;
   font-family: "Helvetica Neue", sans-serif;
+  background: #111;
   color: #fff;
-
-  background-image: url("bg.jpg");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
 }
 
-/* 背景暗く */
-body::before {
-  content: "";
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0,0,0,0.7);
-  z-index: -1;
-}
-
-/* ✅ ナビ（完全安定版） */
+/* ナビ */
 header {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   padding: 30px;
-  letter-spacing: 4px;
 }
 
 header a {
   text-align: center;
-  font-size: 20px;
-  font-weight: 500;
   color: #fff;
   text-decoration: none;
+  letter-spacing: 3px;
   transition: 0.3s;
-  text-shadow: 0 0 8px rgba(255,255,255,0.4);
 }
 
-/* ホバー */
 header a:hover {
   opacity: 0.6;
-  transform: translateY(-2px);
 }
 
-/* 下線アニメ */
 header a::after {
   content: "";
   display: block;
@@ -70,79 +48,88 @@ header a:hover::after {
 
 /* ✅ メイン */
 .main {
-  height: 70vh;
   display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-/* ✅ カード */
-.card {
-  max-width: 580px;
-  padding: 40px;
-  background: rgba(255,255,255,0.15);
-  backdrop-filter: blur(10px);
-  border-radius: 20px;
-  text-align: center;
-}
-
-.card p {
-  font-size: 15px;
-  line-height: 2;
-  color: #ddd;
-}
-
-/* ✅ SNS */
-.sns-section {
-  display: flex;
-  justify-content: center;
-  gap: 25px;
+  gap: 50px;
+  max-width: 1200px;
+  margin: 0 auto;
   padding: 60px;
-}
-
-
-.sns-box {
-  width: 160px;
-  height: 100px;
-
-  display: flex;
   align-items: center;
-  justify-content: center;
-
-  border-radius: 15px;
-  text-decoration: none;
-
-  background: rgba(255,255,255,0.15);
-  backdrop-filter: blur(8px);
-
-  color: #fff;
-  font-weight: bold;
-
-  border: 1px solid rgba(255,255,255,0.2);
-
-  transition: 0.3s;
 }
 
-.sns-box:hover {
-  transform: translateY(-8px) scale(1.08);
+/* ✅ 左（完全安定スライド） */
+.left {
+  flex: 1;
+  position: relative;
+  height: 500px;
+  overflow: hidden;
 }
 
-/* Instagram */
-.instagram {
-  background: linear-gradient(45deg,#f9ce34,#ee2a7b,#6228d7);
+.slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+
+  border-radius: 16px;
+
+  opacity: 0;
+  transition: opacity 1s ease;
 }
 
-/* TikTok */
-.tiktok {
-  color: #00f7ff;
-  text-shadow: 0 0 8px #00f7ff;
+/* 表示中 */
+.slide.active {
+  opacity: 1;
+  z-index: 1;
+}
+
+/* ✅ 右 */
+.right {
+  width: 420px;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+/* ✅ Twitter */
+.twitter {
+  background: rgba(255,255,255,0.08);
+  border-radius: 16px;
+  padding: 10px;
+  overflow: hidden;
+}
+
+/* ✅ NOTE */
+.note {
+  background: rgba(255,255,255,0.08);
+  padding: 30px;
+  border-radius: 16px;
+}
+
+.note h3 {
+  margin-bottom: 10px;
+  letter-spacing: 2px;
+}
+
+.note p {
+  color: #bbb;
+  font-size: 14px;
 }
 
 /* スマホ */
-@media (max-width:768px) {
-  .sns-section {
+@media (max-width: 768px) {
+  .main {
     flex-direction: column;
-    align-items: center;
+  }
+
+  .right {
+    width: 100%;
+  }
+
+  .left {
+    height: 300px;
   }
 }
 </style>
@@ -153,37 +140,60 @@ header a:hover::after {
 <header>
   <a href="portfolio.html">PORTFOLIO</a>
   <a href="index.html" style="font-weight:700;">TOP</a>
-<a href="about.html">ABOUT</a>
+  <a href="about.html">ABOUT</a>
 </header>
 
 <div class="main">
-  <div class="card">
-    <p>
-      ご覧いただきありがとうございます。<br><br>
 
-      日々、写真の撮影と編集を行っています。<br><br>
-
-      このサイトでは、<br>
-      これまでに撮影した作品をまとめています。
-    </p>
+  <!-- ✅ 左 -->
+  <div class="left">
+    <img src="image1.jpg" class="slide active">
+    <img src="image2.jpg" class="slide">
+    <img src="image3.jpg" class="slide">
   </div>
+
+  <!-- ✅ 右 -->
+  <div class="right">
+
+    <!-- Twitter -->
+    <div class="twitter">
+      <a class="twitter-timeline"
+         data-height="260"
+         data-theme="dark"
+         href="https://x.com/matsuu_jp">
+      </a>
+    </div>
+
+    <!-- NOTE -->
+    <div class="note">
+      <h3>NOTE</h3>
+      <p>
+        最近の記事をここに表示します。<br>
+        Coming soon...
+      </p>
+    </div>
+
+  </div>
+
 </div>
 
-<div class="sns-section">
+<!-- ✅ スライド（安定版） -->
+<script>
+const slides = document.querySelectorAll(".slide");
+let current = 0;
 
-  <a href="https://instagram.com" class="sns-box instagram" target="_blank">
-    Instagram
-  </a>
+setInterval(() => {
+  slides[current].classList.remove("active");
 
-  <a href="https://www.tiktok.com/@matsutart?lang=ja-JP" class="sns-box tiktok" target="_blank">
-    TikTok
-  </a>
+  current = (current + 1) % slides.length;
 
-  <a href="https://x.com/matsuu_jp" class="sns-box" target="_blank">
-    X
-  </a>
+  slides[current].classList.add("active");
+}, 3000);
+</script>
 
-</div>
+<!-- ✅ Twitter（これ必須） -->
+<script async src="https://platform.twitter.com/widgets.js"></script>
 
 </body>
 </html>
+``
