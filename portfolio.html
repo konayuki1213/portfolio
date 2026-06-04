@@ -27,6 +27,16 @@ header a {
   letter-spacing: 3px;
 }
 
+header a::after {
+  content: "";
+  display: block;
+  width: 0;
+  height: 2px;
+  background: #fff;
+  margin-top: 5px;
+  transition: 0.3s;
+}
+
 /* レイアウト */
 .container {
   display: flex;
@@ -278,15 +288,6 @@ function closeModal() {
   background: rgba(255,255,255,0.08);
 }
 
-header a::after {
-  content: "";
-  display: block;
-  width: 0;
-  height: 2px;
-  background: #fff;
-  margin-top: 5px;
-  transition: 0.3s;
-}
 
 
 
