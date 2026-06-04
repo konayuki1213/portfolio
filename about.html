@@ -30,8 +30,10 @@ header a {
 
 header a:hover {
   opacity: 0.6;
+  transform: translateY(-2px);
 }
 
+/* 下線 */
 header a::after {
   content: "";
   display: block;
@@ -46,21 +48,27 @@ header a:hover::after {
   width: 100%;
 }
 
-/* ✅ レイアウト（大きく調整） */
+/* ✅ メインレイアウト（仕上げ） */
 .container {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 120px;             /* ←広げた */
-  padding: 120px;         /* ←広げた */
+  gap: 120px;
+  padding: 120px;
+
+  /* 中央寄せ感アップ */
+  transform: translateY(-20px);
 }
 
-/* ✅ 写真（大きく） */
+/* ✅ 写真 */
 .photo {
-  width: 420px;           /* ←大きく */
-  height: 520px;          /* ←大きく */
+  width: 420px;
+  height: 520px;
   border-radius: 12px;
   overflow: hidden;
+
+  /* 🔥 影追加（超重要） */
+  box-shadow: 0 20px 40px rgba(0,0,0,0.6);
 }
 
 .photo img {
@@ -74,18 +82,16 @@ header a:hover::after {
   max-width: 460px;
 }
 
-/* タイトル（大きく） */
 h1 {
   margin-bottom: 40px;
-  font-size: 32px;        /* ←大きく */
+  font-size: 32px;
   letter-spacing: 2px;
 }
 
-/* 本文（少し大きく） */
 p {
   line-height: 2;
   color: #bbb;
-  font-size: 16px;        /* ←大きく */
+  font-size: 16px;
 }
 
 /* ✅ SNS */
@@ -97,12 +103,12 @@ p {
 
 /* アイコン */
 .icon {
-  color: #777;
+  color: #999; /* 少し明るく */
   transition: 0.3s;
 }
 
 .icon svg {
-  width: 28px;            /* ←大きく */
+  width: 28px;
 }
 
 .icon:hover {
@@ -141,7 +147,7 @@ p {
       これまでに撮影した作品をまとめています。
     </p>
 
-    <!-- SNSアイコン -->
+    <!-- SNS -->
     <div class="sns">
 
       <!-- X -->
