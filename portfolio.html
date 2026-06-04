@@ -47,27 +47,29 @@ header a:hover::after {
   width: 100%;
 }
 
-/* 全体 */
+/* ✅ 全体（ここが重要） */
 .container {
   display: flex;
+  max-width: 1500px;   /* ← 小ささ解決 */
+  margin: 0 auto;      /* ← 中央揃え */
 }
 
-/* ✅ カテゴリ */
+/* サイドバー */
 .sidebar {
-  width: 200px;
-  padding: 30px;
+  width: 160px;
+  padding: 20px;
 }
 
 .sidebar button {
-  display: block;
   width: 100%;
   margin-bottom: 12px;
+  padding: 8px;
   background: none;
   border: none;
-  color: #777;
-  font-size: 14px;
+  color: #888;
   text-align: left;
   cursor: pointer;
+  font-size: 14px;
   transition: 0.3s;
 }
 
@@ -80,28 +82,22 @@ header a:hover::after {
   flex: 1;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 25px;
+  gap: 25px;   /* ← 高級感 */
   padding: 30px;
 }
 
-/* ✅ カード */
+/* カード */
 .item {
-  position: relative;
   aspect-ratio: 16/9;
   overflow: hidden;
   border-radius: 14px;
-  cursor: pointer;
 
-  background: rgba(255,255,255,0.05);
-  backdrop-filter: blur(6px);
-
-  box-shadow: 0 10px 25px rgba(0,0,0,0.5);
-
+  box-shadow: 0 20px 40px rgba(0,0,0,0.6);
   transition: 0.3s;
 }
 
 .item:hover {
-  transform: translateY(-8px) scale(1.02);
+  transform: translateY(-8px) scale(1.03);
 }
 
 /* 画像 */
@@ -109,14 +105,14 @@ header a:hover::after {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: 0.4s;
+  transition: 0.5s;
 }
 
 .item:hover img {
   transform: scale(1.08);
 }
 
-/* 非表示 */
+/* フィルター用 */
 .hidden {
   display: none;
 }
@@ -128,24 +124,36 @@ header a:hover::after {
     flex-direction: column;
   }
 
-  /* 🔥 カテゴリ横並び */
+  /* 横並び（改善済み） */
   .sidebar {
     width: 100%;
     display: flex;
-    justify-content: space-around;
-    padding: 15px 0;
+    justify-content: center;
+    gap: 20px;
+    padding: 15px 10px;
   }
 
-  .sidebar button {
-    width: auto;
-    font-size: 13px;
-  }
 
-  /* 🔥 グリッド2列 */
+.sidebar button {
+  width: 100%;
+  margin-bottom: 12px;
+  padding: 10px;
+  background: none;
+  border: none;
+  color: #888;
+  text-align: left;
+  cursor: pointer;
+
+  font-size: 17px;     /* 🔥 大きくする */
+  letter-spacing: 1px; /* ちょいおしゃれ */
+  transition: 0.3s;
+}
+
+
   .gallery {
     grid-template-columns: repeat(2, 1fr);
-    padding: 20px;
     gap: 15px;
+    padding: 20px;
   }
 
 }
@@ -162,7 +170,7 @@ header a:hover::after {
 
 <div class="container">
 
-  <!-- ✅ カテゴリ -->
+  <!-- カテゴリ -->
   <div class="sidebar">
     <button onclick="filter('all')">ALL</button>
     <button onclick="filter('nature')">NATURE</button>
@@ -170,18 +178,21 @@ header a:hover::after {
     <button onclick="filter('art')">ART</button>
   </div>
 
-  <!-- ✅ ギャラリー -->
+  <!-- ギャラリー -->
   <div class="gallery">
 
     <div class="item nature"><img src="image1.jpg"></div>
     <div class="item snap"><img src="image2.jpg"></div>
     <div class="item nature"><img src="image3.jpg"></div>
+
     <div class="item nature"><img src="image4.jpg"></div>
     <div class="item art"><img src="image5.jpg"></div>
     <div class="item snap"><img src="image6.jpg"></div>
+
     <div class="item nature"><img src="image7.jpg"></div>
     <div class="item nature"><img src="image8.jpg"></div>
     <div class="item nature"><img src="image9.jpg"></div>
+
     <div class="item nature"><img src="image10.jpg"></div>
     <div class="item snap"><img src="image11.jpg"></div>
 
@@ -205,4 +216,3 @@ function filter(category) {
 
 </body>
 </html>
-
