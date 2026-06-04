@@ -25,24 +25,14 @@ header a {
   color: #fff;
   text-decoration: none;
   letter-spacing: 3px;
-}
-
-
-header a {
-  text-align: center;
-  color: #fff;
-  text-decoration: none;
-  letter-spacing: 3px;
   transition: 0.3s;
 }
 
-/* ✅ ホバーで浮く */
 header a:hover {
   opacity: 0.6;
   transform: translateY(-2px);
 }
 
-/* ✅ 下線アニメ（これが欲しいやつ🔥） */
 header a::after {
   content: "";
   display: block;
@@ -57,24 +47,25 @@ header a:hover::after {
   width: 100%;
 }
 
-/* レイアウト */
+/* 全体 */
 .container {
   display: flex;
 }
 
-/* サイドバー */
+/* ✅ カテゴリ */
 .sidebar {
   width: 200px;
-  padding: 20px;
+  padding: 30px;
 }
 
 .sidebar button {
+  display: block;
   width: 100%;
-  margin-bottom: 10px;
-  padding: 12px;
+  margin-bottom: 12px;
   background: none;
   border: none;
-  color: #888;
+  color: #777;
+  font-size: 14px;
   text-align: left;
   cursor: pointer;
   transition: 0.3s;
@@ -84,50 +75,36 @@ header a:hover::after {
   color: #fff;
 }
 
-/* ギャラリー */
+/* ✅ ギャラリー */
 .gallery {
   flex: 1;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
+  gap: 25px;
   padding: 30px;
 }
 
 /* ✅ カード */
 .item {
   position: relative;
-  aspect-ratio: 16 / 9;
+  aspect-ratio: 16/9;
   overflow: hidden;
-  border-radius: 10px;
+  border-radius: 14px;
   cursor: pointer;
 
-  /* ここが追加部分👇 */
-  background: rgba(255,255,255,0.08);
+  background: rgba(255,255,255,0.05);
   backdrop-filter: blur(6px);
-  padding: 5px;
+
   box-shadow: 0 10px 25px rgba(0,0,0,0.5);
 
-  /* アニメーション */
-  opacity: 0;
-  transform: translateY(30px);
-  animation: fadeUp 0.8s forwards;
+  transition: 0.3s;
 }
 
 .item:hover {
   transform: translateY(-8px) scale(1.02);
 }
 
-.item:nth-child(1) { animation-delay: 0.1s; }
-.item:nth-child(2) { animation-delay: 0.2s; }
-.item:nth-child(3) { animation-delay: 0.3s; }
-
-@keyframes fadeUp {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
+/* 画像 */
 .item img {
   width: 100%;
   height: 100%;
@@ -135,40 +112,8 @@ header a:hover::after {
   transition: 0.4s;
 }
 
-.item img:hover {
+.item:hover img {
   transform: scale(1.08);
-}
-
-/* モーダル */
-.modal {
-  display: none;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0,0,0,0.9);
-  justify-content: center;
-  align-items: center;
-}
-
-.modal-content {
-  text-align: center;
-  max-width: 700px;
-}
-
-.modal-content img {
-  width: 100%;
-  border-radius: 10px;
-}
-
-.modal-content h3 {
-  margin-top: 15px;
-}
-
-.modal-content p {
-  color: #aaa;
-  font-size: 14px;
 }
 
 /* 非表示 */
@@ -176,15 +121,33 @@ header a:hover::after {
   display: none;
 }
 
-/* スマホ */
+/* ✅ スマホ */
 @media (max-width: 768px) {
+
   .container {
     flex-direction: column;
   }
 
+  /* 🔥 カテゴリ横並び */
+  .sidebar {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    padding: 15px 0;
+  }
+
+  .sidebar button {
+    width: auto;
+    font-size: 13px;
+  }
+
+  /* 🔥 グリッド2列 */
   .gallery {
     grid-template-columns: repeat(2, 1fr);
+    padding: 20px;
+    gap: 15px;
   }
+
 }
 </style>
 </head>
@@ -192,13 +155,14 @@ header a:hover::after {
 <body>
 
 <header>
-  <a href="portfolio.html">PORTFOLIO</a>
+  <a href="portfolio.html" style="font-weight:700;">PORTFOLIO</a>
   <a href="index.html">TOP</a>
   <a href="about.html">ABOUT</a>
 </header>
 
 <div class="container">
 
+  <!-- ✅ カテゴリ -->
   <div class="sidebar">
     <button onclick="filter('all')">ALL</button>
     <button onclick="filter('nature')">NATURE</button>
@@ -206,38 +170,23 @@ header a:hover::after {
     <button onclick="filter('art')">ART</button>
   </div>
 
+  <!-- ✅ ギャラリー -->
   <div class="gallery">
 
-    <div class="item nature" onclick="openModal('image1.jpg','昭和記念公園','秋に撮影した作品。')">
-      <img src="image1.jpg">
-    </div>
-
-    <div class="item snap" onclick="openModal('image2.jpg','昭和記念公園','幻想的な風景。')">
-      <img src="image2.jpg">
-    </div>
-
-    <div class="item nature" onclick="openModal('image3.jpg','昭和記念公園','秋の作品')">
-      <img src="image3.jpg">
-    </div>
-
-    <div class="item art" onclick="openModal('image5.jpg','彫刻の森美術館','冬の作品')">
-      <img src="image5.jpg">
-    </div>
-
-    <div class="item snap" onclick="openModal('image6.jpg','箱根神社','冬の作品')">
-      <img src="image6.jpg">
-    </div>
+    <div class="item nature"><img src="image1.jpg"></div>
+    <div class="item snap"><img src="image2.jpg"></div>
+    <div class="item nature"><img src="image3.jpg"></div>
+    <div class="item nature"><img src="image4.jpg"></div>
+    <div class="item art"><img src="image5.jpg"></div>
+    <div class="item snap"><img src="image6.jpg"></div>
+    <div class="item nature"><img src="image7.jpg"></div>
+    <div class="item nature"><img src="image8.jpg"></div>
+    <div class="item nature"><img src="image9.jpg"></div>
+    <div class="item nature"><img src="image10.jpg"></div>
+    <div class="item snap"><img src="image11.jpg"></div>
 
   </div>
 
-</div>
-
-<div class="modal" id="modal" onclick="closeModal()">
-  <div class="modal-content">
-    <img id="modalImg">
-    <h3 id="modalTitle"></h3>
-    <p id="modalDesc"></p>
-  </div>
 </div>
 
 <script>
@@ -248,26 +197,12 @@ function filter(category) {
     if (category === "all") {
       item.classList.remove("hidden");
     } else {
-      if (item.classList.contains(category)) {
-        item.classList.remove("hidden");
-      } else {
-        item.classList.add("hidden");
-      }
+      item.classList.toggle("hidden", !item.classList.contains(category));
     }
   });
-}
-
-function openModal(src, title, desc) {
-  document.getElementById("modal").style.display = "flex";
-  document.getElementById("modalImg").src = src;
-  document.getElementById("modalTitle").textContent = title;
-  document.getElementById("modalDesc").textContent = desc;
-}
-
-function closeModal() {
-  document.getElementById("modal").style.display = "none";
 }
 </script>
 
 </body>
 </html>
+
