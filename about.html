@@ -5,10 +5,13 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>About</title>
 
+<!-- ✅ フォント（正しい！） -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
 <style>
 body {
   margin: 0;
-  font-family: "Helvetica Neue", sans-serif;
+  font-family: 'Poppins', "Helvetica Neue", sans-serif;
   background: #111;
   color: #fff;
 }
@@ -18,29 +21,25 @@ header {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   padding: 30px;
-  letter-spacing: 3px;
 }
 
 header a {
   text-align: center;
   color: #fff;
   text-decoration: none;
-  transition: 0.3s;
-}
-
-header a:hover {
-  opacity: 0.6;
-  transform: translateY(-2px);
+  letter-spacing: 3px;
+  position: relative;
 }
 
 /* 下線 */
 header a::after {
   content: "";
-  display: block;
+  position: absolute;
+  left: 0;
+  bottom: -6px;
   width: 0;
   height: 2px;
   background: #fff;
-  margin-top: 5px;
   transition: 0.3s;
 }
 
@@ -48,72 +47,99 @@ header a:hover::after {
   width: 100%;
 }
 
-/* ✅ メインレイアウト（仕上げ） */
-.container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 120px;
-  padding: 120px;
-
-  /* 中央寄せ感アップ */
-  transform: translateY(-20px);
+/* メイン */
+.main {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 100px 30px;
+  text-align: center;
 }
 
-/* ✅ 写真 */
-.photo {
-  width: 420px;
-  height: 520px;
-  border-radius: 12px;
+/* ✅ 丸プロフィール */
+.profile-icon {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
   overflow: hidden;
+  margin: 0 auto 30px;
 
-  /* 🔥 影追加（超重要） */
-  box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+  border: 2px solid rgba(255,255,255,0.15);
 }
 
-.photo img {
+.profile-icon img {
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
 
-/* ✅ テキスト */
-.text {
-  max-width: 460px;
-}
-
-h1 {
+/* タイトル */
+.title {
+  font-size: 42px;
+  font-weight: 600;
   margin-bottom: 40px;
-  font-size: 32px;
-  letter-spacing: 2px;
 }
 
-p {
-  line-height: 2;
-  color: #bbb;
+/* テキスト */
+.text {
   font-size: 16px;
+  line-height: 2;
+  color: #aaa;
 }
 
-/* ✅ SNS */
+.text p {
+  margin-bottom: 25px;
+}
+
+/* ✅ SNS（今回の主役🔥） */
 .sns {
-  margin-top: 40px;
+  margin-top: 50px;
   display: flex;
-  gap: 25px;
+  justify-content: center;
+  gap: 35px;
 }
 
-/* アイコン */
-.icon {
-  color: #999; /* 少し明るく */
+/* アイコン枠なし */
+.sns a {
+  width: 32px;
+  height: 32px;
+  display: block;
+
+  opacity: 0.6;
   transition: 0.3s;
 }
 
-.icon svg {
-  width: 28px;
+/* ホバー */
+.sns a:hover {
+  opacity: 1;
+  transform: translateY(-3px);
 }
 
-.icon:hover {
-  color: #fff;
-  transform: translateY(-4px);
+/* ロゴ */
+.sns img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+
+  /* ✅ これが重要（白黒化） */
+  filter: grayscale(1) brightness(1.2);
+}
+
+/* スマホ */
+@media (max-width: 768px) {
+
+  .main {
+    padding: 60px 20px;
+  }
+
+  .title {
+    font-size: 30px;
+  }
+
+  .profile-icon {
+    width: 80px;
+    height: 80px;
+  }
+
 }
 </style>
 </head>
@@ -126,56 +152,34 @@ p {
   <a href="about.html" style="font-weight:700;">ABOUT</a>
 </header>
 
-<div class="container">
+<div class="main">
 
-  <!-- 写真 -->
-  <div class="photo">
-    <img src="image11.jpg">
+  <!-- ✅ プロフ -->
+  <div class="profile-icon">
+    <img src="profile.jpg">
   </div>
 
-  <!-- テキスト -->
+  <h1 class="title">ABOUT</h1>
+
   <div class="text">
+    <p>ご覧いただきありがとうございます。</p>
+    <p>日々、写真の撮影と編集を行っています。</p>
+    <p>このサイトでは、これまでに撮影した作品をまとめています。</p>
+  </div>
 
-    <h1>ABOUT</h1>
+  <!-- ✅ SNS -->
+  <div class="sns">
+    <a href="https://x.com/matsuu_jp">
+      <img src="x.png">
+    </a>
 
-    <p>
-      ご覧いただきありがとうございます。<br><br>
+    <a href="https://instagram.com">
+      <img src="insta.png">
+    </a>
 
-      日々、写真の撮影と編集を行っています。<br><br>
-
-      このサイトでは、
-      これまでに撮影した作品をまとめています。
-    </p>
-
-    <!-- SNS -->
-    <div class="sns">
-
-      <!-- X -->
-      <a href="https://x.com/matsuu_jp" target="_blank" class="icon">
-        <svg viewBox="0 0 24 24">
-          <path fill="currentColor"
-          d="M18.244 2H21.5L14.75 10.05L22.5 22H16.5L11.7 14.8L5.5 22H2.25L9.4 13.5L2 2H8.2L12.6 8.6L18.244 2Z"/>
-        </svg>
-      </a>
-
-      <!-- Instagram -->
-      <a href="https://instagram.com" target="_blank" class="icon">
-        <svg viewBox="0 0 24 24">
-          <path fill="currentColor"
-          d="M7 2C4.2 2 2 4.2 2 7V17C2 19.8 4.2 22 7 22H17C19.8 22 22 19.8 22 17V7C22 4.2 19.8 2 17 2H7ZM12 7C14.8 7 17 9.2 17 12C17 14.8 14.8 17 12 17C9.2 17 7 14.8 7 12C7 9.2 9.2 7 12 7Z"/>
-        </svg>
-      </a>
-
-      <!-- TikTok -->
-      <a href="https://www.tiktok.com/@matsutart" target="_blank" class="icon">
-        <svg viewBox="0 0 24 24">
-          <path fill="currentColor"
-          d="M16 3C16.5 5.5 18.5 7.5 21 8V11C19.3 11 17.8 10.5 16.5 9.6V16C16.5 19.3 13.8 22 10.5 22C7.2 22 4.5 19.3 4.5 16C4.5 12.7 7.2 10 10.5 10C11 10 11.5 10.1 12 10.2V13C11.6 12.8 11.1 12.7 10.5 12.7C8.8 12.7 7.5 14 7.5 15.7C7.5 17.4 8.8 18.7 10.5 18.7C12.2 18.7 13.5 17.4 13.5 15.7V3H16Z"/>
-        </svg>
-      </a>
-
-    </div>
-
+    <a href="https://www.tiktok.com/@matsutart">
+      <img src="tiktok.png">
+    </a>
   </div>
 
 </div>
