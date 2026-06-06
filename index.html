@@ -5,16 +5,13 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Home</title>
 
-<!-- ✅ フォント読み込み（超重要🔥） -->
+<!-- ✅ フォント -->
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 
 <style>
 body {
   margin: 0;
-
-  /* ✅ フォント変更（ここで効く🔥） */
   font-family: 'Poppins', "Helvetica Neue", sans-serif;
-
   background: #111;
   color: #fff;
 }
@@ -34,7 +31,7 @@ header a {
   position: relative;
 }
 
-/* ✅ 下線アニメーション */
+/* 下線 */
 header a::after {
   content: "";
   position: absolute;
@@ -50,7 +47,7 @@ header a:hover::after {
   width: 100%;
 }
 
-/* メイン */
+/* ✅ メイン */
 .main {
   display: flex;
   gap: 60px;
@@ -68,7 +65,7 @@ header a:hover::after {
 /* タイトル */
 .title {
   font-size: 42px;
-  font-weight: 600; /* ✅ 太さ追加でかっこよく */
+  font-weight: 600;
   margin-bottom: 10px;
 }
 
@@ -105,7 +102,7 @@ header a:hover::after {
   display: flex;
   flex-direction: column;
   gap: 25px;
-  margin-top: 160px;
+  margin-top: 170px;
 }
 
 /* カード */
@@ -115,7 +112,6 @@ header a:hover::after {
   gap: 15px;
   padding: 20px;
   border-radius: 16px;
-
   text-decoration: none;
   color: #aaa;
 
@@ -153,33 +149,44 @@ header a:hover::after {
 
 .text-title {
   font-size: 16px;
-  font-weight: 400;
   color: #fff;
 }
 
 .text-desc {
   font-size: 14px;
-  color: #aaa;
 }
 
-/* スマホ */
+/* ✅ ✅ スマホ完全対応（ここが重要🔥） */
 @media (max-width: 768px) {
+
   .main {
     flex-direction: column;
     padding: 30px;
   }
 
+  /* ✅ 中央寄せ */
+  .left {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .title, .subtitle {
+    text-align: center;
+  }
+
+  /* ✅ 画像サイズ調整 */
+  .slider {
+    width: 100%;
+    max-width: 500px;
+    height: 300px;
+  }
+
+  /* ✅ SNS */
   .right {
     width: 100%;
-    margin-top: 0;
-  }
-
-  .title {
-    font-size: 32px;
-  }
-
-  .slider {
-    height: 300px;
+    margin-top: 20px;
   }
 }
 </style>
