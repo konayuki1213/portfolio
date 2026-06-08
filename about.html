@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>About</title>
 
-<!-- ✅ フォント（正しい書き方🔥） -->
+<!-- ✅ フォント（ちゃんと書く） -->
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 
 <style>
@@ -16,7 +16,7 @@ body {
   color: #fff;
 }
 
-/* ナビ */
+/* ✅ ナビ（最終完成版🔥） */
 header {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
@@ -25,27 +25,41 @@ header {
 
 header a {
   text-align: center;
-  color: #fff;
+  color: #aaa;              /* ← 通常グレー */
   text-decoration: none;
   letter-spacing: 3px;
   position: relative;
+  transition: 0.3s;
 }
 
-/* 下線 */
+/* ✅ ホバー */
+header a:hover {
+  color: #fff;
+  transform: translateY(-2px);
+}
+
+/* ✅ 下線（ホバーの時だけ） */
 header a::after {
   content: "";
-  position: absolute;
-  left: 0;
-  bottom: -6px;
+  display: block;
   width: 0;
   height: 2px;
   background: #fff;
+  margin-top: 5px;
   transition: 0.3s;
 }
 
 header a:hover::after {
   width: 100%;
 }
+
+/* ✅ 選択中（ABOUT） */
+header a.active {
+  color: #fff;
+  font-weight: 700;
+}
+
+/* ❌ activeに線は絶対つけない */
 
 /* メイン */
 .main {
@@ -89,7 +103,7 @@ header a:hover::after {
   margin-bottom: 25px;
 }
 
-/* ✅ SNS（完全ミニマル版🔥） */
+/* SNS */
 .sns {
   margin-top: 50px;
   display: flex;
@@ -117,7 +131,6 @@ header a:hover::after {
 
 /* スマホ */
 @media (max-width: 768px) {
-
   .main {
     padding: 60px 20px;
   }
@@ -139,12 +152,11 @@ header a:hover::after {
 <header>
   <a href="portfolio.html">PORTFOLIO</a>
   <a href="index.html">TOP</a>
-  <a href="about.html" style="font-weight:700;">ABOUT</a>
+  <a href="about.html" class="active">ABOUT</a>
 </header>
 
 <div class="main">
 
-  <!-- プロフ -->
   <div class="profile-icon">
     <img src="image12.jpg">
   </div>
@@ -157,9 +169,7 @@ header a:hover::after {
     <p>このサイトでは、これまでに撮影した作品をまとめています。</p>
   </div>
 
-  <!-- ✅ SNS（公式SVG🔥） -->
   <div class="sns">
-
     <a href="https://x.com/matsuu_jp">
       <img src="https://cdn.simpleicons.org/x/ffffff">
     </a>
@@ -171,7 +181,6 @@ header a:hover::after {
     <a href="https://www.tiktok.com/@matsutart">
       <img src="https://cdn.simpleicons.org/tiktok/ffffff">
     </a>
-
   </div>
 
 </div>

@@ -16,7 +16,7 @@ body {
   color: #fff;
 }
 
-/* ナビ */
+/* ✅ ナビ */
 header {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
@@ -25,26 +25,38 @@ header {
 
 header a {
   text-align: center;
-  color: #fff;
+  color: #aaa;
   text-decoration: none;
   letter-spacing: 3px;
   position: relative;
+  transition: 0.3s;
 }
 
-/* 下線 */
+/* ホバー */
+header a:hover {
+  color: #fff;
+  transform: translateY(-2px);
+}
+
+/* 下線（ホバーだけ） */
 header a::after {
   content: "";
-  position: absolute;
-  left: 0;
-  bottom: -6px;
+  display: block;
   width: 0;
   height: 2px;
   background: #fff;
+  margin-top: 5px;
   transition: 0.3s;
 }
 
 header a:hover::after {
   width: 100%;
+}
+
+/* ✅ 選択中（線なし） */
+header a.active {
+  color: #fff;
+  font-weight: 700;
 }
 
 /* ✅ メイン */
@@ -62,7 +74,6 @@ header a:hover::after {
   flex: 1;
 }
 
-/* タイトル */
 .title {
   font-size: 42px;
   font-weight: 600;
@@ -147,16 +158,7 @@ header a:hover::after {
   flex-direction: column;
 }
 
-.text-title {
-  font-size: 16px;
-  color: #fff;
-}
-
-.text-desc {
-  font-size: 14px;
-}
-
-/* ✅ ✅ スマホ完全対応（ここが重要🔥） */
+/* ✅ スマホ */
 @media (max-width: 768px) {
 
   .main {
@@ -164,26 +166,16 @@ header a:hover::after {
     padding: 30px;
   }
 
-  /* ✅ 中央寄せ */
   .left {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
     align-items: center;
-  }
-
-  .title, .subtitle {
     text-align: center;
   }
 
-  /* ✅ 画像サイズ調整 */
   .slider {
-    width: 100%;
     max-width: 500px;
     height: 300px;
   }
 
-  /* ✅ SNS */
   .right {
     width: 100%;
     margin-top: 20px;
@@ -196,7 +188,7 @@ header a:hover::after {
 
 <header>
   <a href="portfolio.html">PORTFOLIO</a>
-  <a href="index.html" style="font-weight:700;">TOP</a>
+  <a href="index.html" class="active">TOP</a>
   <a href="about.html">ABOUT</a>
 </header>
 
@@ -214,38 +206,39 @@ header a:hover::after {
     </div>
   </div>
 
-  <!-- 右 -->
+  <!-- ✅ 右（NOTE復活🔥） -->
   <div class="right">
 
     <a href="https://x.com/matsuu_jp" class="card">
       <div class="icon"><img src="x.jpg"></div>
       <div class="text">
-        <div class="text-title">X (Twitter)</div>
-        <div class="text-desc">@matsuu_jp の投稿</div>
+        <div>X (Twitter)</div>
+        <div style="font-size:14px;">@matsuu_jp の投稿</div>
       </div>
     </a>
 
     <a href="https://instagram.com" class="card">
       <div class="icon"><img src="insta.jpg"></div>
       <div class="text">
-        <div class="text-title">Instagram</div>
-        <div class="text-desc">写真を見る</div>
+        <div>Instagram</div>
+        <div style="font-size:14px;">写真を見る</div>
       </div>
     </a>
 
     <a href="https://www.tiktok.com/@matsutart" class="card">
       <div class="icon"><img src="tiktok.jpg"></div>
       <div class="text">
-        <div class="text-title">TikTok</div>
-        <div class="text-desc">動画を見る</div>
+        <div>TikTok</div>
+        <div style="font-size:14px;">動画を見る</div>
       </div>
     </a>
 
+    <!-- ✅ NOTE復活 -->
     <a href="https://note.com/matsuta_jp" class="card">
       <div class="icon"><img src="note.jpg"></div>
       <div class="text">
-        <div class="text-title">NOTE</div>
-        <div class="text-desc">記事を読む</div>
+        <div>NOTE</div>
+        <div style="font-size:14px;">記事を読む</div>
       </div>
     </a>
 
@@ -253,7 +246,6 @@ header a:hover::after {
 
 </div>
 
-<!-- スライド -->
 <script>
 const slides = document.querySelectorAll(".slide");
 let index = 0;
@@ -267,3 +259,4 @@ setInterval(() => {
 
 </body>
 </html>
+
