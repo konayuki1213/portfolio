@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>About</title>
 
-<!-- ✅ フォント（ちゃんと書く） -->
+<!-- ✅ フォント -->
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 
 <style>
@@ -16,7 +16,7 @@ body {
   color: #fff;
 }
 
-/* ✅ ナビ（最終完成版🔥） */
+/* ナビ */
 header {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
@@ -25,20 +25,16 @@ header {
 
 header a {
   text-align: center;
-  color: #aaa;              /* ← 通常グレー */
+  color: #aaa;
   text-decoration: none;
   letter-spacing: 3px;
-  position: relative;
   transition: 0.3s;
 }
 
-/* ✅ ホバー */
 header a:hover {
   color: #fff;
-  transform: translateY(-2px);
 }
 
-/* ✅ 下線（ホバーの時だけ） */
 header a::after {
   content: "";
   display: block;
@@ -53,13 +49,10 @@ header a:hover::after {
   width: 100%;
 }
 
-/* ✅ 選択中（ABOUT） */
 header a.active {
   color: #fff;
   font-weight: 700;
 }
-
-/* ❌ activeに線は絶対つけない */
 
 /* メイン */
 .main {
@@ -129,8 +122,18 @@ header a.active {
   object-fit: contain;
 }
 
-/* スマホ */
+/* ✅ PC用（CDN） */
+.pc-icon {
+  display: block;
+}
+
+.sp-icon {
+  display: none;
+}
+
+/* ✅ スマホ */
 @media (max-width: 768px) {
+
   .main {
     padding: 60px 20px;
   }
@@ -142,6 +145,15 @@ header a.active {
   .profile-icon {
     width: 80px;
     height: 80px;
+  }
+
+  /* ✅ アイコン切り替え */
+  .pc-icon {
+    display: none;
+  }
+
+  .sp-icon {
+    display: block;
   }
 }
 </style>
@@ -169,18 +181,27 @@ header a.active {
     <p>このサイトでは、これまでに撮影した作品をまとめています。</p>
   </div>
 
+  <!-- ✅ SNS（ハイブリッド🔥） -->
   <div class="sns">
+
+    <!-- X -->
     <a href="https://x.com/matsuu_jp">
-      <img src="https://cdn.simpleicons.org/x/ffffff">
+      <img class="pc-icon" src="https://cdn.simpleicons.org/x/ffffff">
+      <img class="sp-icon" src="x.jpg">
     </a>
 
+    <!-- Instagram -->
     <a href="https://instagram.com">
-      <img src="https://cdn.simpleicons.org/instagram/ffffff">
+      <img class="pc-icon" src="https://cdn.simpleicons.org/instagram/ffffff">
+      <img class="sp-icon" src="insta.jpg">
     </a>
 
+    <!-- TikTok -->
     <a href="https://www.tiktok.com/@matsutart">
-      <img src="https://cdn.simpleicons.org/tiktok/ffffff">
+      <img class="pc-icon" src="https://cdn.simpleicons.org/tiktok/ffffff">
+      <img class="sp-icon" src="tiktok.jpg">
     </a>
+
   </div>
 
 </div>
