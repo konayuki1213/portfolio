@@ -22,14 +22,14 @@ header {
 
 header a {
   text-align: center;
-  color: #fff;
+  color: #aaa;
   text-decoration: none;
   letter-spacing: 3px;
   transition: 0.3s;
 }
 
 header a:hover {
-  opacity: 0.6;
+  color: #fff;
   transform: translateY(-2px);
 }
 
@@ -47,14 +47,20 @@ header a:hover::after {
   width: 100%;
 }
 
-/* ✅ 全体 */
+/* 選択中 */
+header a.active {
+  color: #fff;
+  font-weight: 700;
+}
+
+/* 全体 */
 .container {
   display: flex;
   max-width: 1500px;
   margin: 0 auto;
 }
 
-/* ✅ サイドバー */
+/* サイドバー */
 .sidebar {
   width: 180px;
   padding: 30px 20px;
@@ -64,17 +70,13 @@ header a:hover::after {
   width: 100%;
   margin-bottom: 20px;
   padding: 12px;
-
   background: none;
   border: none;
-
   color: #aaa;
   text-align: left;
   cursor: pointer;
-
-  font-size: 22px;   /* 🔥大きい */
+  font-size: 22px;
   letter-spacing: 2px;
-
   transition: 0.3s;
 }
 
@@ -83,22 +85,22 @@ header a:hover::after {
   transform: translateX(6px);
 }
 
-/* ✅ ギャラリー */
+/* ギャラリー */
 .gallery {
   flex: 1;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 25px;
   padding: 30px;
-
-  min-height: 70vh;   /* 🔥ズレ防止（今回の核心） */
+  min-height: 70vh;
 }
 
-/* カード */
+/* ✅ カード（ホバー復活🔥） */
 .item {
   aspect-ratio: 16/9;
   overflow: hidden;
   border-radius: 14px;
+  cursor: pointer;
 
   box-shadow: 0 20px 40px rgba(0,0,0,0.6);
   transition: 0.3s;
@@ -106,6 +108,7 @@ header a:hover::after {
 
 .item:hover {
   transform: translateY(-8px) scale(1.03);
+  box-shadow: 0 30px 60px rgba(0,0,0,0.8);
 }
 
 .item img {
@@ -124,7 +127,35 @@ header a:hover::after {
   display: none;
 }
 
-/* ✅ スマホ */
+/* ✅ モーダル（拡大） */
+.modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.9);
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+.modal img {
+  max-width: 90%;
+  max-height: 90%;
+  border-radius: 12px;
+
+  transform: scale(0.9);
+  transition: 0.3s;
+}
+
+.modal.active {
+  display: flex;
+}
+
+.modal.active img {
+  transform: scale(1);
+}
+
+/* スマホ */
 @media (max-width: 768px) {
 
   .container {
@@ -156,7 +187,7 @@ header a:hover::after {
 <body>
 
 <header>
-  <a href="portfolio.html" style="font-weight:700;">PORTFOLIO</a>
+  <a href="portfolio.html" class="active">PORTFOLIO</a>
   <a href="index.html">TOP</a>
   <a href="about.html">ABOUT</a>
 </header>
@@ -211,9 +242,13 @@ header a:hover::after {
 
     <div class="item nature"><img src="image28.jpg"></div>
     <div class="item art"><img src="image29.jpg"></div>
-
   </div>
 
+</div>
+
+<!-- ✅ 拡大 -->
+<div class="modal" id="modal">
+  <img id="modalImg">
 </div>
 
 <script>
@@ -228,6 +263,23 @@ function filter(category) {
     }
   });
 }
+
+/* 拡大 */
+const modal = document.getElementById("modal");
+const modalImg = document.getElementById("modalImg");
+const images = document.querySelectorAll(".item img");
+
+images.forEach(img => {
+  img.addEventListener("click", () => {
+    modal.classList.add("active");
+    modalImg.src = img.src;
+  });
+});
+
+/* 閉じる */
+modal.addEventListener("click", () => {
+  modal.classList.remove("active");
+});
 </script>
 
 </body>
