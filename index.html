@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Home</title>
 
-<!-- ✅ フォント -->
+<!-- ✅ フォント（これが正解🔥） -->
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 
 <style>
@@ -28,17 +28,14 @@ header a {
   color: #aaa;
   text-decoration: none;
   letter-spacing: 3px;
-  position: relative;
   transition: 0.3s;
 }
 
-/* ホバー */
 header a:hover {
   color: #fff;
   transform: translateY(-2px);
 }
 
-/* 下線（ホバーだけ） */
 header a::after {
   content: "";
   display: block;
@@ -53,7 +50,6 @@ header a:hover::after {
   width: 100%;
 }
 
-/* ✅ 選択中 */
 header a.active {
   color: #fff;
   font-weight: 700;
@@ -66,10 +62,8 @@ header a.active {
   max-width: 1400px;
   margin: 0 auto;
   padding: 40px 60px 60px;
-  align-items: flex-start;
 }
 
-/* 左 */
 .left {
   flex: 1;
 }
@@ -77,7 +71,6 @@ header a.active {
 .title {
   font-size: 42px;
   font-weight: 600;
-  margin-bottom: 10px;
 }
 
 .subtitle {
@@ -85,7 +78,7 @@ header a.active {
   margin-bottom: 30px;
 }
 
-/* ✅ スライダー（PC） */
+/* ✅ スライダー */
 .slider {
   position: relative;
   width: 100%;
@@ -98,16 +91,16 @@ header a.active {
   position: absolute;
   width: 100%;
   height: 100%;
-  object-fit: cover;   /* PCはトリミング */
+  object-fit: cover;
   opacity: 0;
-  transition: opacity 1s;
+  transition: 1s;
 }
 
 .slide.active {
   opacity: 1;
 }
 
-/* 右 */
+/* ✅ 右 */
 .right {
   width: 360px;
   display: flex;
@@ -116,7 +109,7 @@ header a.active {
   margin-top: 170px;
 }
 
-/* カード */
+/* ✅ カード */
 .card {
   display: flex;
   align-items: center;
@@ -127,9 +120,7 @@ header a.active {
   color: #aaa;
 
   background: rgba(255,255,255,0.05);
-  backdrop-filter: blur(10px);
   border: 1px solid rgba(255,255,255,0.1);
-
   transition: 0.3s;
 }
 
@@ -138,6 +129,7 @@ header a.active {
   color: #fff;
 }
 
+/* アイコン */
 .icon {
   width: 50px;
   height: 50px;
@@ -151,7 +143,7 @@ header a.active {
   object-fit: cover;
 }
 
-/* ✅ ✅ スマホ（ここが今回の修正🔥） */
+/* ✅ ✅ スマホ修正（ガチ重要🔥） */
 @media (max-width: 768px) {
 
   .main {
@@ -160,27 +152,25 @@ header a.active {
   }
 
   .left {
-    align-items: center;
     text-align: center;
   }
 
-  /* ✅ スライダー修正 */
+  /* ✅ スライダー改善 */
   .slider {
     width: 100%;
-    max-width: 500px;
-    aspect-ratio: 16/9;  /* ←これが超重要🔥 */
+    max-width: 350px;
+    aspect-ratio: 3/4;
     height: auto;
+    margin: 0 auto;
   }
 
-  /* ✅ 画像の見え方も改善 */
   .slide {
-    object-fit: contain;  /* ←全部見せる🔥 */
-    background: #000;
+    object-fit: cover; /* ←これで自然に見える */
   }
 
   .right {
     width: 100%;
-    margin-top: 20px;
+    margin-top: 30px;
   }
 }
 </style>
@@ -196,7 +186,6 @@ header a.active {
 
 <div class="main">
 
-  <!-- 左 -->
   <div class="left">
     <h1 class="title">Welcome</h1>
     <p class="subtitle">まつたの写真館へ</p>
@@ -208,39 +197,26 @@ header a.active {
     </div>
   </div>
 
-  <!-- 右 -->
   <div class="right">
 
     <a href="https://x.com/matsuu_jp" class="card">
       <div class="icon"><img src="x.jpg"></div>
-      <div>
-        <div>X (Twitter)</div>
-        <div style="font-size:14px;">@matsuu_jp の投稿</div>
-      </div>
+      <div>X (Twitter)</div>
     </a>
 
     <a href="https://instagram.com" class="card">
       <div class="icon"><img src="insta.jpg"></div>
-      <div>
-        <div>Instagram</div>
-        <div style="font-size:14px;">写真を見る</div>
-      </div>
+      <div>Instagram</div>
     </a>
 
     <a href="https://www.tiktok.com/@matsutart" class="card">
       <div class="icon"><img src="tiktok.jpg"></div>
-      <div>
-        <div>TikTok</div>
-        <div style="font-size:14px;">動画を見る</div>
-      </div>
+      <div>TikTok</div>
     </a>
 
     <a href="https://note.com/matsuta_jp" class="card">
       <div class="icon"><img src="note.jpg"></div>
-      <div>
-        <div>NOTE</div>
-        <div style="font-size:14px;">記事を読む</div>
-      </div>
+      <div>NOTE</div>
     </a>
 
   </div>
@@ -260,4 +236,5 @@ setInterval(() => {
 
 </body>
 </html>
+
 
