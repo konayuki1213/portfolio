@@ -53,7 +53,7 @@ header a:hover::after {
   width: 100%;
 }
 
-/* ✅ 選択中（線なし） */
+/* ✅ 選択中 */
 header a.active {
   color: #fff;
   font-weight: 700;
@@ -85,7 +85,7 @@ header a.active {
   margin-bottom: 30px;
 }
 
-/* スライダー */
+/* ✅ スライダー（PC） */
 .slider {
   position: relative;
   width: 100%;
@@ -98,7 +98,7 @@ header a.active {
   position: absolute;
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: cover;   /* PCはトリミング */
   opacity: 0;
   transition: opacity 1s;
 }
@@ -138,7 +138,6 @@ header a.active {
   color: #fff;
 }
 
-/* アイコン */
 .icon {
   width: 50px;
   height: 50px;
@@ -152,13 +151,7 @@ header a.active {
   object-fit: cover;
 }
 
-/* テキスト */
-.text {
-  display: flex;
-  flex-direction: column;
-}
-
-/* ✅ スマホ */
+/* ✅ ✅ スマホ（ここが今回の修正🔥） */
 @media (max-width: 768px) {
 
   .main {
@@ -171,9 +164,18 @@ header a.active {
     text-align: center;
   }
 
+  /* ✅ スライダー修正 */
   .slider {
+    width: 100%;
     max-width: 500px;
-    height: 300px;
+    aspect-ratio: 16/9;  /* ←これが超重要🔥 */
+    height: auto;
+  }
+
+  /* ✅ 画像の見え方も改善 */
+  .slide {
+    object-fit: contain;  /* ←全部見せる🔥 */
+    background: #000;
   }
 
   .right {
@@ -206,12 +208,12 @@ header a.active {
     </div>
   </div>
 
-  <!-- ✅ 右（NOTE復活🔥） -->
+  <!-- 右 -->
   <div class="right">
 
     <a href="https://x.com/matsuu_jp" class="card">
       <div class="icon"><img src="x.jpg"></div>
-      <div class="text">
+      <div>
         <div>X (Twitter)</div>
         <div style="font-size:14px;">@matsuu_jp の投稿</div>
       </div>
@@ -219,7 +221,7 @@ header a.active {
 
     <a href="https://instagram.com" class="card">
       <div class="icon"><img src="insta.jpg"></div>
-      <div class="text">
+      <div>
         <div>Instagram</div>
         <div style="font-size:14px;">写真を見る</div>
       </div>
@@ -227,16 +229,15 @@ header a.active {
 
     <a href="https://www.tiktok.com/@matsutart" class="card">
       <div class="icon"><img src="tiktok.jpg"></div>
-      <div class="text">
+      <div>
         <div>TikTok</div>
         <div style="font-size:14px;">動画を見る</div>
       </div>
     </a>
 
-    <!-- ✅ NOTE復活 -->
     <a href="https://note.com/matsuta_jp" class="card">
       <div class="icon"><img src="note.jpg"></div>
-      <div class="text">
+      <div>
         <div>NOTE</div>
         <div style="font-size:14px;">記事を読む</div>
       </div>
